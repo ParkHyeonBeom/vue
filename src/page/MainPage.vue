@@ -12,20 +12,7 @@
     </SplideSlide>
   </Splide>
   <body>
-  <HeaderComponent></HeaderComponent>
   <div class="deadline-product">
-    <div class="detail-product-img-wrapper">
-      <section class="splide" aria-label="Splide Basic HTML Example">
-        <div class="splide__track">
-          <ul class="splide__list">
-            <li class="splide__slide" id="splide01-slide03" role="tabpanel" aria-roledescription="slide" aria-label="3 of 4" aria-hidden="true"><div class="css-122y91a ewptmlp4"><img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=640" srcset="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=960 1.5x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1280 2x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1920 3x" class="css-1jjjg2j"></div></li>
-            <li class="splide__slide" id="splide01-slide01" role="tabpanel" aria-roledescription="slide" aria-label="1 of 4" aria-hidden="true"><div class="css-122y91a ewptmlp4"><img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/5ca2058e-3539-4f88-a742-83a3ad47ee33.jpg?w=640" srcset="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/5ca2058e-3539-4f88-a742-83a3ad47ee33.jpg?w=960 1.5x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/5ca2058e-3539-4f88-a742-83a3ad47ee33.jpg?w=1280 2x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/5ca2058e-3539-4f88-a742-83a3ad47ee33.jpg?w=1920 3x" class="css-1jjjg2j"></div></li>
-            <li class="splide__slide" id="splide01-slide02" role="tabpanel" aria-roledescription="slide" aria-label="2 of 4" aria-hidden="true"><div class="css-122y91a ewptmlp4"><img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/dac32994-d1fb-4244-9875-27f01ec38f82.jpg?w=640" srcset="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/dac32994-d1fb-4244-9875-27f01ec38f82.jpg?w=960 1.5x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/dac32994-d1fb-4244-9875-27f01ec38f82.jpg?w=1280 2x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/dac32994-d1fb-4244-9875-27f01ec38f82.jpg?w=1920 3x" class="css-1jjjg2j"></div></li>
-          </ul>
-          <span class="deadline-product-number">1/3</span>
-        </div>
-      </section>
-    </div>
   </div>
   <nav class="category">
     <ul class="category-items">
@@ -240,8 +227,8 @@
       </div>
     </div>
   </section>
-  <FooterComponent></FooterComponent>
   </body>
+  <FooterComponent></FooterComponent>
 </template>
 
 <script>

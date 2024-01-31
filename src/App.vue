@@ -1,16 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <CartPage></CartPage>
+  <router-view></router-view>
   
 </template>
 
 <script>
-import CartPage from './page/CartPage.vue'
+
 
 export default {
   name: 'App',
   components: {
-    CartPage
   }
 }
 </script>

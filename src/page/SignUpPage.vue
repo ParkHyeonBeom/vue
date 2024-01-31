@@ -114,7 +114,9 @@
       </div>
 
       <br>
+      <router-link to="/verify">
       <button type="submit">회원 가입하기</button>
+      </router-link>
     </form>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="email-verify"> 
-        <img src="./icon/pampam-logo.png">
+        <img src="../../public/icon/pampam-logo.png">
         
         <div class="txt">
             이메일을 인증해주세요 😊

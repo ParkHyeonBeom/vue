@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="content-container">
       <div class="text-with-image">
-        <img src="./icon/pampam-logo.png" alt="Pampam 로고">
+        <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
       </div>
       <br>
       <div>
@@ -12,8 +12,8 @@
       <div class="confortLogin">SNS계정으로 간편 회원가입</div>
       <div class="sns-buttons">
         <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
-        <a href="/users/auth/kakao" class="kakao"><img src="./icon/kakao.png" alt="Kakao 로고"></a>
-        <a href="/users/auth/naver" class="naver"><img src="./icon/naver.png" alt="Naver 로고"></a>
+        <a href="/users/auth/kakao" class="kakao"><img src="../../public/icon/kakao.png" alt="Kakao 로고"></a>
+        <a href="/users/auth/naver" class="naver"><img src="../../public/icon/naver.png" alt="Naver 로고"></a>
       </div>
       <hr class="line">
     </div>
@@ -113,38 +113,6 @@
         </div>
       </div>
 
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const agreeAllCheckbox = document.querySelector('[name="agreeAll"]');
-          const allCheckboxes = document.querySelectorAll('[name^="agree"]');
-
-          // Function to check or uncheck all checkboxes
-          function updateCheckboxes(checked) {
-            allCheckboxes.forEach(function (checkbox) {
-              checkbox.checked = checked;
-            });
-          }
-
-          // Add event listener to the "전체동의" checkbox
-          agreeAllCheckbox.addEventListener('change', function () {
-            updateCheckboxes(agreeAllCheckbox.checked);
-          });
-
-          // Add event listener to uncheck "전체동의" only when a checkbox other than "전체동의" is unchecked
-          allCheckboxes.forEach(function (checkbox) {
-            checkbox.addEventListener('change', function () {
-              if (checkbox !== agreeAllCheckbox && !checkbox.checked) {
-                agreeAllCheckbox.checked = false;
-              }
-            });
-          });
-        });
-      </script>
-
-
-
-
       <br>
       <button type="submit">회원 가입하기</button>
     </form>
@@ -155,6 +123,32 @@
 export default {
   name: 'SignUpPage',
 }
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   const agreeAllCheckbox = document.querySelector('[name="agreeAll"]');
+//   const allCheckboxes = document.querySelectorAll('[name^="agree"]');
+//
+//   // Function to check or uncheck all checkboxes
+//   function updateCheckboxes(checked) {
+//     allCheckboxes.forEach(function (checkbox) {
+//       checkbox.checked = checked;
+//     });
+//   }
+//
+//   // Add event listener to the "전체동의" checkbox
+//   agreeAllCheckbox.addEventListener('change', function () {
+//     updateCheckboxes(agreeAllCheckbox.checked);
+//   });
+//
+//   // Add event listener to uncheck "전체동의" only when a checkbox other than "전체동의" is unchecked
+//   allCheckboxes.forEach(function (checkbox) {
+//     checkbox.addEventListener('change', function () {
+//       if (checkbox !== agreeAllCheckbox && !checkbox.checked) {
+//         agreeAllCheckbox.checked = false;
+//       }
+//     });
+//   });
+// });
 </script>
 
 <style>

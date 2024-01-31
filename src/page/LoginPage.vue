@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="content-container">
       <div class="text-with-image">
-        <img src="./icon/pampam-logo.png" alt="Pampam 로고">
+        <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
       </div>
       <form id="loginForm">
         <input type="text" placeholder="이메일" id="이메일" required>
@@ -20,8 +20,8 @@
       <div class="confortLogin">SNS계정으로 간편 로그인 / 회원가입</div>
       <div class="sns-buttons">
         <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
-        <a href="/users/auth/kakao" class="kakao"><img src="./icon/kakao.png" alt="Kakao 로고"></a>
-        <a href="/users/auth/naver" class="naver"><img src="./icon/naver.png" alt="Naver 로고"></a>
+        <a href="/users/auth/kakao" class="kakao"><img src="../../public/icon/kakao.png" alt="Kakao 로고"></a>
+        <a href="/users/auth/naver" class="naver"><img src="../../public/icon/naver.png" alt="Naver 로고"></a>
       </div>
       <div class="loginError">로그인에 문제가 있으신가요?</div>
       <hr class="line">
@@ -41,29 +41,29 @@ export default {
   name: 'LoginPage',
 }
 
-function toggleOrderSearch() {
-  var orderSearchContainer = document.querySelector('.order-search-container');
-  var isVisible = orderSearchContainer.style.maxHeight !== '0px';
-
-  if (isVisible) {
-    orderSearchContainer.style.maxHeight = '0';
-    orderSearchContainer.style.opacity = '0';
-  } else {
-    orderSearchContainer.style.maxHeight = '200px'; // Adjust the height as needed
-    orderSearchContainer.style.opacity = '1';
-  }
-}
-
-function searchOrder() {
-  // 주문 조회 기능 구현
-  var orderNumber = document.getElementById('orderNumber').value;
-  var orderEmail = document.getElementById('orderEmail').value;
-  // 실제로는 이 정보를 서버로 전송하여 주문 조회를 수행해야 합니다.
-  // 여기서는 간단하게 콘솔에 출력하는 예시를 보여드립니다.
-  console.log('주문번호:', orderNumber);
-  console.log('이메일:', orderEmail);
-  // 실제로는 서버로 전송 및 응답 처리를 구현해야 합니다.
-}
+// function toggleOrderSearch() {
+//   var orderSearchContainer = document.querySelector('.order-search-container');
+//   var isVisible = orderSearchContainer.style.maxHeight !== '0px';
+//
+//   if (isVisible) {
+//     orderSearchContainer.style.maxHeight = '0';
+//     orderSearchContainer.style.opacity = '0';
+//   } else {
+//     orderSearchContainer.style.maxHeight = '200px'; // Adjust the height as needed
+//     orderSearchContainer.style.opacity = '1';
+//   }
+// }
+//
+// function searchOrder() {
+//   // 주문 조회 기능 구현
+//   var orderNumber = document.getElementById('orderNumber').value;
+//   var orderEmail = document.getElementById('orderEmail').value;
+//   // 실제로는 이 정보를 서버로 전송하여 주문 조회를 수행해야 합니다.
+//   // 여기서는 간단하게 콘솔에 출력하는 예시를 보여드립니다.
+//   console.log('주문번호:', orderNumber);
+//   console.log('이메일:', orderEmail);
+//   // 실제로는 서버로 전송 및 응답 처리를 구현해야 합니다.
+// }
 </script>
 
 <style>

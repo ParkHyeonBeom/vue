@@ -1,18 +1,5 @@
 <template>
   <HeaderComponent></HeaderComponent>
-  <Splide :options="{ rewind: true }" aria-label="My Favorite Images">
-    <SplideSlide>
-      <img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=640" alt="Sample 1">
-    </SplideSlide>
-    <SplideSlide>
-      <img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/5ca2058e-3539-4f88-a742-83a3ad47ee33.jpg?w=640" alt="Sample 2">
-    </SplideSlide>
-    <SplideSlide>
-      <img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/dac32994-d1fb-4244-9875-27f01ec38f82.jpg?w=640" alt="Sample 3">
-    </SplideSlide>
-  </Splide>
-  <body>
-  <HeaderComponent></HeaderComponent>
   <div class="deadline-product">
     <div class="detail-product-img-wrapper">
       <section class="splide" aria-label="Splide Basic HTML Example">
@@ -241,35 +228,20 @@
     </div>
   </section>
   <FooterComponent></FooterComponent>
-  </body>
 </template>
 
 <script>
 import HeaderComponent from '../components/HeaderComponent.vue';
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
-import '@splidejs/vue-splide/css';
 import FooterComponent from '../components/FooterComponent.vue';
 
 export default {
   name: 'MainPage',
   components: {
-    HeaderComponent,FooterComponent,Splide,SplideSlide,
+    HeaderComponent,FooterComponent
   },
   data() {
     return {
-      options: {
-        type : 'fade',
-        rewind      : true,
-        perPage     : 1,
-        autoplay    : true,
-        pauseOnHover: false,
-        arrows      : false,
-        dots: true,
-        animatedDots: true,
-        autowidth: true ,
-        autoheight: true,
-        margin: 0
-      },
+
     };
   },
 }
@@ -295,26 +267,9 @@ section {
 }
 
 .deadline-product{
-  height: 370px;
+  height: 200px;
   display: flex;
   align-items: flex-start;
-  width: 100%;
-}
-
-.detail-product-img-wrapper {
-  position: relative;
-  width: 100%;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0 auto;
-}
-
-.splide__slide{
-  margin: 0 auto;
-  object-fit:cover;
-}
-
-.css-1jjjg2j{
   width: 100%;
 }
 
@@ -616,4 +571,10 @@ div{
   display: flex;
   flex-flow: column;
 }
+
+.splide__slide{
+  margin: 0 auto;
+  object-fit:cover;
+}
+
 </style>

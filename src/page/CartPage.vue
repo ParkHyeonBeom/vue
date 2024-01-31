@@ -9,6 +9,7 @@
       href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/GmarketSans/font-face.css" />
   </head>
   <body>
+  <HeaderComponent/>
     <div class="cart">
       <div class="cart-left">
         <div class="sticky-child commerce-cart__header">
@@ -36,7 +37,7 @@
           <li class="commerce-cart__content__group-item">
             <article class="commerce-cart-group">
               <h1 class="commerce-cart__group__header">주식회사 두레샘<!-- --> 배송</h1>
-              <CartCardComponent v-for="product in productList" :key="product" v-bind="product" />
+              <CartCardComponent v-for="product in productList" :key="product.id" v-bind="product" />
             </article>
           </li>
         </ul>
@@ -60,7 +61,7 @@
             <dd><span class="number">58,800</span>원</dd>
           </div>
         </dl>
-        <button class="commerce-cart__side-bar__order__btn" type="button">2개 상품 구매하기</button>
+        <button class="commerce-cart__side-bar__order__btn" type="button" @click="getCartList">2개 상품 구매하기</button>
       </div>
     </div>
   </body>
@@ -69,6 +70,9 @@
 
 <script>
 import CartCardComponent from "../components/CartCardComponent.vue";
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import axios from "axios";
+
 export default {
 
   name: 'CartPage',
@@ -86,7 +90,22 @@ export default {
       ]
     }
   },
+  methods: {
+    async getCartList() {
+      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoiaG9zYWU5MDVAZ21haWwuY29tIiwibmFtZSI6InRlc3QiLCJwaG9uZU51bSI6IjAxMC0xMTExLTExMTEiLCJhZGRyZXNzIjoi7ISc7Jq47IucIiwiYXV0aG9yaXR5IjoiQ09OU1VNRVIiLCJpYXQiOjE3MDY2ODg3NTEsImV4cCI6MTcwNjk4ODc1MX0.v2rFsK61A_EC1SwFRqMjPxoquKypC9IhQ7w4feMssYU"
+      let response = await axios.get("http://localhost:8080/cart/cartList", {
+        headers: {
+          Authorization: token
+        }
+      });
+      console.log(response.data.result);
+
+      this.productList =  response.data.result;
+      return this.productList;
+    }
+  },
   components: {
+    HeaderComponent,
     CartCardComponent,
   }
 }

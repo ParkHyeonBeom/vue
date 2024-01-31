@@ -1,4 +1,5 @@
 <template>
+  <header>
   <div class="header-container">
     <div class="logo">
       <img src="../assets/pampam-logo.png" width="130px" height="80px" alt="">
@@ -76,6 +77,7 @@
       <p class="basic" style="font-size: 14px;">기획전</p>
     </div>
   </div>
+  </header>
 </template>
 
 <script>

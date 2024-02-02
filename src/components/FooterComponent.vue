@@ -115,13 +115,13 @@ a{
 .footer{
   padding: 40px 40px;
   background-color: #e8e9ea;
-
   box-sizing: border-box;
   font-size: 12px;
   line-height: 16px;
   display: grid;
   grid-template-columns: 1fr 1px 1fr 1px 2fr;
   grid-column-gap: 30px;
+
 }
 
 .customer-service-btn{

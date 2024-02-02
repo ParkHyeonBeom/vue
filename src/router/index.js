@@ -16,13 +16,13 @@ const router = createRouter({
         { path: '/member/login', component: LoginPage },
         { path: '/member/signup', component: SignUpPage },
         { path: '/cart', component: CartPage},
-        { path: '/product/:id', component: ProductDetailPage},
+        { path: '/product/:productIdx', component: ProductDetailPage},
         { path: '/product/register', component: ProductRegister}
     ]
 })
 
 router.beforeEach((to, from, next) => {
-    if (to.fullPath === "/cart" && sessionStorage.getItem("token") == null) {
+    if (to.fullPath === "/product" && sessionStorage.getItem("token") == null) {
         next("/member/login");
     } else {
         next();

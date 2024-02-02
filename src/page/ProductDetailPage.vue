@@ -1,11 +1,12 @@
 <template>
   <HeaderComponent/>
+  {{$route.params.productIdx}}
   <div class="production-selling">
     <div class="production-selling-overview container">
       <nav class="commerce-category-breadcrumb-wrap production-selling-overview__category">
         <ol class="commerce-category-breadcrumb">
           <li class="commerce-category-breadcrumb__entry">
-            <a class="link" href="/store/category?category_id=28000000&amp;affect_type= ProductSaleDetail&amp;affect_id=672428">조명</a>
+            <a class="link" href="/store/category?category_id=28000000&amp;affect_type= ProductSaleDetail&amp;affect_id=672428">카테고리</a>
             <svg class="icon" width="8" height="8" viewBox="0 0 8 8" fill="currentColor" preserveAspectRatio="xMidYMid meet">
               <path d="M4.95 4L2.12 1.19l.7-.71 3.54 3.54-3.53 3.53-.7-.7z">
               </path>
@@ -32,10 +33,10 @@
         <div class="production-selling-header">
           <h1 class="production-selling-header__title">
             <p class="production-selling-header__title__brand-wrap">
-              <a class="production-selling-header__title__brand" href="/brands/home?query=%EC%95%84%EC%9A%B0%EC%96%B4%EB%A3%B8&amp;affect_type=ProductSaleDetail&amp;affect_id=672428">{{ product.productName }}</a>
+              <a class="production-selling-header__title__brand" href="/brands/home?query=%EC%95%84%EC%9A%B0%EC%96%B4%EB%A3%B8&amp;affect_type=ProductSaleDetail&amp;affect_id=672428"></a>
             </p>
             <div class="production-selling-header__title__name-wrap">
-              <span class="production-selling-header__title__name">*스마트전구증정* 머쉬룸 장스탠드 순수 국내자체제작 조명 _7colors</span>
+              <span class="production-selling-header__title__name">{{ product.productName }}</span>
               <div class="production-selling-header__action">
                 <button class="production-selling-header__action__button production-selling-header__action__button-scrap" type="button">
                   <svg class="icon--stroke" aria-label="스크랩" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="0.5" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
@@ -59,8 +60,9 @@
             <div class="production-selling-header__price">
               <span class="production-selling-header__price__price-wrap">
                 <span class="production-selling-header__price__discount">
-                  <span class="number">15</span><span class="percent">%</span>
-                </span>
+                  <span class="number"></span><span class="percent">{{(product.price - product.salePrice ) / product.price  * 100}} %  &nbsp;</span>
+                 </span>
+
                 <del class="production-selling-header__price__original">
                   <span class="number">{{ product.price }}</span>
                   <span class="won">원</span>
@@ -68,7 +70,7 @@
                   <span class="production-selling-header__price__separator"></span>
                     <div class="production-selling-header__price__price-value-wrap">
                       <div class="production-selling-header__price__price">
-                        <span class="number">129,000</span>
+                        <span class="number">{{ product.salePrice }}</span>
                         <span class="won">원</span>
                       </div>
                     </div>
@@ -129,7 +131,7 @@
               <span>0</span>원</span>
           </p>
           <div class="production-selling-option-form__footer">
-            <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn">장바구니</button>
+            <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn(1)">장바구니</button>
             <button class="button button--color-blue button--size-55 button--shape-4" type="button">바로구매</button>
           </div>
         </div>
@@ -145,136 +147,6 @@
               <p style="text-align: center;"><a href="https://ohou.se/productions/905929/selling?affect_id=27&amp;affect_type=StoreSearchResult"><img src="https://prs.ohou.se/apne2/any/uploads/productions/descriptions/url/v1-197078276358208.jpg" alt="상품의 상세 설명 이미지" width="1440" height="400"></a></p>
               <p style="text-align: center;"><a href="https://ohou.se/productions/1658834/selling?affect_id=2&amp;affect_type=StoreSearchResult"><img src="https://prs.ohou.se/apne2/any/uploads/productions/descriptions/url/v1-197078428340352.jpg" alt="상품의 상세 설명 이미지"></a></p>
 
-              <p style="text-align: center;"><span style="color: #ba372a;"><strong>스마트 전구 연결 문제로 인한 제품 환불은 절대적으로 불가합니다.</strong></span></p>
-              <p style="text-align: center;"><strong><span style="color: #ba372a;">스마트 전구는 소모품으로 변심 반품이 불가합니다.</span></strong></p>
-              <p style="text-align: center;"><strong>*스마트전구 무료 증정 제품*</strong></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/167746975844908059.jpg" alt="상품의 상세 설명 이미지" width="1440" height="1440"></p>
-              <p style="text-align: center;"><span style="font-size: 10.6667px;">머쉬룸 장 스탠드는<span style="color: #000000; background-color: #fbeeb8;"> <span style="text-decoration: underline;"><strong>전체 스틸 재질이며, 플라스틱 아닙니다 ^^</strong></span></span></span></p>
-              <p style="text-align: center;"><span style="font-size: 10.6667px;">조립이 어려우시다면 고객센터로 문자 남겨주세요!</span></p>
-              <p style="text-align: center;"><span style="font-size: 10.6667px;">교환이 필요할 경우 빠르게 교환을 도와드립니다 :)</span></p>
-              <p style="text-align: center;"><span style="font-size: 10.6667px;">감사합니다.</span></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/162995264097820170.png" alt="상품의 상세 설명 이미지" width="1143" height="331"></p>
-              <p style="text-align: center;"><span style="background-color: #f8cac6;"><strong>* 제품 조립시 돌려서 조립하실 때 전선이 엉키거나 꼬이게 두지 않도록 주의해주세요!</strong></span></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/163063517237580312.jpg" alt="상품의 상세 설명 이미지" width="989" height="2181"></p>
-              <p style="text-align: center;"><strong>* 실제 상품은 이미지와 상이할 수 있습니다. *</strong></p>
-              <p style="text-align: center;"><strong>항상 같은 레시피의 같은 도색 작업을 꼼꼼하게 진행을 하나,</strong></p>
-              <p style="text-align: center;"><strong>간혹 카메라 사진과 햇빛의 각도로 인해 사진과 실물이 조금 상이할 수 있습니다.</strong></p>
-              <p style="text-align: center;"><strong>이 점 참고 부탁드리며, </strong><strong>상세페이지와 리뷰 사진 여러장을 참고해 구매해주시면 감사하겠습니다 :)</strong></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="color: #ba372a;"><strong>스마트 전구 연결 문제로 인한 제품 환불은 절대적으로 불가합니다.</strong></span></p>
-              <p style="text-align: center;"><strong><span style="color: #ba372a;">스마트 전구는 소모품으로 변심 반품이 불가합니다.</span></strong></p>
-              <p style="text-align: center;"><strong><span style="color: #ba372a;">&nbsp;Google Play 혹은 APP Store 에서<br>TAPO를 검색 후 설치합니다.<br><span style="text-decoration: underline; font-size: 18pt;">(TP-Link Tapo를 설치합니다.)</span></span></strong></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/167168976260567513.jpg" alt="상품의 상세 설명 이미지" width="1440" height="1295"></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922325144716367.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/167928954937837392.jpg" alt="상품의 상세 설명 이미지" width="1440" height="9422"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/167928955908149303.jpg" alt="상품의 상세 설명 이미지"></p>
-              <p style="text-align: center;"><strong><span style="background-color: #bfedd2; font-size: 18pt;">New ! Green Color ! *</span></strong></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/168378672820867302.jpg" alt="상품의 상세 설명 이미지" width="1080" height="1440"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/168378674913278467.jpg" alt="상품의 상세 설명 이미지" width="1080" height="1440"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/168378676716469837.jpg" alt="상품의 상세 설명 이미지" width="1080" height="1440"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/167928961802230011.jpg" alt="상품의 상세 설명 이미지" width="1440" height="9041"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922259153313092.jpg" alt="상품의 상세 설명 이미지" width="1440" height="5000"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8; font-size: 10pt;"># 제품 조립 설명서 확인 꼭 부탁드립니다 !</span></p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8; font-size: 10pt;">* 소켓에 채워져 있는 ** 스크류를 먼저 빼시고,</span></p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8; font-size: 10pt;">갓을 올리시는 순서를 꼭 지켜주세요 :)&nbsp;</span></p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8; font-size: 10pt;">그래야 흔들리지 않는 조명이며, 수평이 맞는 조명입니다 !&nbsp;</span></p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8; font-size: 10pt;">절대 적으로 흔들리는, 수평이 안 맞는 조명은 없습니다 !!&nbsp;</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922281941031103.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922302362026152.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="font-size: 14pt;">̵ ̀ ̗♡ ̖ ́ ̵</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8;"># 제품 조립 설명서 확인 꼭 부탁드립니다 !</span></p>
-              <p style="text-align: center;"><br><span style="background-color: #fbeeb8;">* 소켓에 채워져 있는 ** 스크류를 먼저 빼시고,</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8;">갓을 올리시는 순서를 꼭 지켜주세요 :)&nbsp;</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8;">그래야 흔들리지 않는 조명이며, 수평이 맞는 조명입니다 !&nbsp;</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8;">절대 적으로 흔들리는, 수평이 안 맞는 조명은 없습니다 !!&nbsp;</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922338501098427.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922349271878163.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922367068751270.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/165233105659520246.jpg" alt="상품의 상세 설명 이미지" width="1440" height="7245"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922384098264658.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922422649502583.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;"><span style="font-size: 14pt;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/165233108493124717.jpg" alt="상품의 상세 설명 이미지" width="1440" height="7245"></span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="font-size: 14pt;">̵ ̀ ̗♡ ̖ ́ ̵</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8;"># 제품 조립 설명서 확인 꼭 부탁드립니다 !</span></p>
-              <p style="text-align: center;"><br><span style="background-color: #fbeeb8;">* 소켓에 채워져 있는 ** 스크류를 먼저 빼시고,</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8;">갓을 올리시는 순서를 꼭 지켜주세요 :)&nbsp;</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8;">그래야 흔들리지 않는 조명이며, 수평이 맞는 조명입니다 !&nbsp;</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="background-color: #fbeeb8;">절대 적으로 흔들리는, 수평이 안 맞는 조명은 없습니다 !!&nbsp;</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922424004222315.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/164922424904682865.jpg" alt="상품의 상세 설명 이미지" width="1440" height="6000"></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="font-size: 24pt; background-color: #fbeeb8;">* <span style="font-size: 18pt;">머쉬룸 장 스탠드 상세 사이즈</span> *</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="font-size: 18pt; background-color: #fbeeb8;">갓 지름 : 300mm</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="font-size: 18pt; background-color: #fbeeb8;">전체 높이 : 1,450mm</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><span style="font-size: 18pt; background-color: #fbeeb8;">밑판 지름 : 290mm</span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><strong>* 실제 상품은 이미지와 상이할 수 있습니다. *</strong></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;"><strong>항상 같은 레시피의 같은 도색 작업을 꼼꼼하게 진행을 하나 간혹 카메라 사진과 햇빛의 각도로 인해 사진과 실물이 조금 상이할 수 있습니다. 이 점 참고 부탁드리며,</strong></p>
-              <p style="text-align: center;"><strong>상세페이지와 리뷰 사진 여러장을 참고해 구매해주시면 감사하겠습니다 :)</strong></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">교환 | 반품</p>
-              <p style="text-align: center;">#배송중 발생하는 파손 및 제품결함은 신속하게 교환해드립니다.</p>
-              <p style="text-align: center;">#<strong>교환 및 반품기간은 수령일로부터 7일 이내입니다.</strong> 상품 수령 후 사용하지 않고 파손 및 훼손되지 않은 상태여야 교환|반품이 가능합니다.</p>
-              <p style="text-align: center;">#반품시 반드시 기존 포장상태로 반송해주셔야하며, 포장 미흡으로 인한 파손 시 처리가 불가한 점<br>양해부탁드립니다.</p>
-              <p style="text-align: center;">#제품을 교환|반품으로 보내시기 전, 고객센터로 꼭 먼저 연락주시기 바랍니다. (사진첨부해주시면 감사하겠습니다.)</p>
-              <p style="text-align: center;">사전 연락 없이 보내신 제품은 반송되오니 양해부탁드립니다.</p>
-              <p style="text-align: center;">#제품을 한번이라도 설치하신 경우 반품 및 교환이 불가합니다.</p>
-              <p style="text-align: center;">#제품 하자로 교환|반품을 접수하셨으나 검수 후 하자가 아닌 경우에는 왕복 택배비를 고객님께서 부담해주셔야 합니다.</p>
-              <p style="text-align: center;">#모든 아우어룸 조명 제품은 구입날짜로부터 2년동안 무상 AS를 해드립니다. <strong>(제품 점등 문제에 의한 수리만 가능합니다. 사용 후 파손 수리 불가)</strong></p>
-              <p style="text-align: center;">#반품|교환 귀책 사유가 구매자인경우, 반품 배송비 (왕복) 기본 20,000원 그 이상 나오는 경우에도 구매자가 부담해야합니다.<span style="text-decoration: underline; color: #e03e2d;"> <strong>(최초배송비/편도 + 회수배송비 + 훼손제품및박스)</strong></span></p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p style="text-align: center;">&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p style="text-align: center;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/161371697524133027.jpg" alt="상품의 상세 설명 이미지" width="994" height="1510"></p>
-
               <p class="descriptions" style="text-align: center;"><strong>*제작 공정 시 생길 수 있는 제품의 표면의 미세한 기포,요철,흠집,얼룩 등은 불량 교환/반품의 사유가 되지 않는 점, 참고해주세요.</strong></p>
             </div>
           </div>
@@ -288,12 +160,13 @@
 <script>
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
+import {useRoute} from "vue-router";
 import axios from "axios";
 
 export default {
   name: 'ProductDetailPage',
   data() {
-    return { product: {} }
+    return { product: 1 }
   },
   components: {HeaderComponent, FooterComponent},
   methods: {
@@ -307,8 +180,10 @@ export default {
       console.log(response.data.result);
     },
     async readProductDetail(productIdx) {
+      const route = useRoute()
+      console.log(route.params.productIdx);
       let token = "Bearer "
-      let response = await axios.get("http://localhost:8080/" + productIdx, {
+      let response = await axios.get("http://localhost:8080/product/read/" + productIdx, {
         headers: {
           Authorization: token
         },
@@ -717,7 +592,7 @@ div {
 }
 
 .production-selling-header__delivery__today-departure__header .text .active {
-  color: #35c5f0;
+  color: rgb(24, 204, 60);
   font-weight: 700;
 }
 
@@ -839,8 +714,9 @@ div {
 }
 .button--color-blue-inverted {
   background-color: #fff;
-  border-color: #35c5f0;
-  color: #35c5f0;
+  border-color:rgb(24, 204, 60);
+  color: rgb(24, 204, 60);
+  height: 30px;
 }
 .button {
   -moz-user-select: -moz-none;
@@ -864,9 +740,10 @@ div {
 }
 
 .button--color-blue {
-  background-color: #35c5f0;
-  border-color: #35c5f0;
+  background-color: rgb(24, 204, 60);
+  border-color: rgb(30, 199, 64);
   color: #fff;
+  height: 45px;
 }
 
 .product-details{
@@ -928,7 +805,7 @@ a{
   display: flex;
   font-size: 16px;
   line-height: 20px;
-  font-weight: 700;
+  font-weight: 800;
   white-space: nowrap;
   margin-right: 6px;
   text-decoration: none;
@@ -1148,5 +1025,10 @@ a{
 .css-8n6bc3 {
   vertical-align: top;
   color: #828C94;
+}
+
+.percent {
+  color: red;
+  font-weight: 900;
 }
 </style>

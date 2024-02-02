@@ -29,6 +29,7 @@
       <div class="right-cart">
         <router-link to="./cart">
           <img src="../assets/cart.jpeg" width="45px" height="45px">
+<!--          <font-awesome-icon icon="cart-shopping" />-->
         </router-link>
       </div>
       <div class="right-login">

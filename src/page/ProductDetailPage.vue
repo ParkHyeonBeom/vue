@@ -1,6 +1,5 @@
 <template>
   <HeaderComponent/>
-  {{$route.params.productIdx}}
   <div class="production-selling">
     <div class="production-selling-overview container">
       <nav class="commerce-category-breadcrumb-wrap production-selling-overview__category">
@@ -22,7 +21,7 @@
           <div class="production-selling-cover-image-container">
             <div class="carousel production-selling-cover-image production-selling-overview__cover-image" role="region" aria-roledescription="carousel">
               <div class="carousel__list-wrap production-selling-cover-image__carousel-wrap">
-                <img class="production-selling-cover-image__entry__image" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/169145619855597000.jpg?gif=1&amp;w=640&amp;h=640&amp;c=c&amp;webp=1" srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/169145619855597000.jpg?gif=1&amp;w=850&amp;h=850&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/169145619855597000.jpg?gif=1&amp;w=1080&amp;h=1080&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/169145619855597000.jpg?gif=1&amp;w=1700&amp;h=1700&amp;c=c&amp;webp=1 3x" tabindex="0" alt="상품의 대표 이미지"><div class="production-selling-cover-image__timer--pc">
+                <img class="production-selling-cover-image__entry__image" :src="product.filename" alt="">
               </div>
               </div>
             </div>
@@ -60,7 +59,7 @@
             <div class="production-selling-header__price">
               <span class="production-selling-header__price__price-wrap">
                 <span class="production-selling-header__price__discount">
-                  <span class="number"></span><span class="percent">{{(product.price - product.salePrice ) / product.price  * 100}} %  &nbsp;</span>
+                  <span class="number"></span><span class="percent">{{Math.floor((product.price - product.salePrice ) / product.price  * 100)}} %  &nbsp;</span>
                  </span>
 
                 <del class="production-selling-header__price__original">
@@ -128,10 +127,10 @@
           <p class="css-49v6aj ejhg2ki2">
             <span class="css-7c0zb9 ejhg2ki1">주문금액</span>
             <span class="css-q02jxk ejhg2ki0">
-              <span>0</span>원</span>
+              <span>{{ product.salePrice }}</span>원</span>
           </p>
           <div class="production-selling-option-form__footer">
-            <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn(1)">장바구니</button>
+            <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn">장바구니</button>
             <button class="button button--color-blue button--size-55 button--shape-4" type="button">바로구매</button>
           </div>
         </div>
@@ -153,7 +152,6 @@
         </section>
       </div>
     </div>
-  </div>
   <FooterComponent/>
 </template>
 
@@ -165,25 +163,33 @@ import axios from "axios";
 
 export default {
   name: 'ProductDetailPage',
+
   data() {
-    return { product: 1 }
+    return {
+      product: "" ,
+      productIdx: ""
+    }
   },
+
   components: {HeaderComponent, FooterComponent},
+
   methods: {
-    async productCartIn(productIdx) {
-      let token = "Bearer "
-      let response = await axios.post("http://localhost:8080/cart/in/" + productIdx, {
+    async productCartIn() {
+      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QG5hdmVyLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2ODQ0NjY2LCJleHAiOjE3MDcxNDQ2NjZ9.aKpHuh4grjdDa8eLi5KjHkjU7QWjT5xWhxNV-AGrKKc"
+      let response = await axios.get("http://localhost:8080/cart/in/" + this.productIdx, {
         headers: {
           Authorization: token
         },
       })
       console.log(response.data.result);
     },
-    async readProductDetail(productIdx) {
+    async readProductDetail() {
       const route = useRoute()
       console.log(route.params.productIdx);
-      let token = "Bearer "
-      let response = await axios.get("http://localhost:8080/product/read/" + productIdx, {
+      this.productIdx = route.params.productIdx;
+
+      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QG5hdmVyLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2ODQ0NjY2LCJleHAiOjE3MDcxNDQ2NjZ9.aKpHuh4grjdDa8eLi5KjHkjU7QWjT5xWhxNV-AGrKKc"
+      let response = await axios.get("http://localhost:8080/product/read/" + this.productIdx, {
         headers: {
           Authorization: token
         },
@@ -193,7 +199,7 @@ export default {
     }
   },
   mounted() {
-    this.readProductDetail(1);
+    this.readProductDetail();
   }
 }
 </script>
@@ -1028,7 +1034,7 @@ a{
 }
 
 .percent {
-  color: red;
+  color: rgb(24, 204, 60);;
   font-weight: 900;
 }
 </style>

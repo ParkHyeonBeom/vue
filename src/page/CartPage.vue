@@ -67,7 +67,8 @@ export default {
   data() {
     return {
       amount: 0,
-      productList: []
+      productList: [],
+      customData: []
     }
   },
   methods: {
@@ -78,9 +79,9 @@ export default {
           Authorization: token
         }
       });
-      // console.log(response.data.result);
 
       this.productList = response.data.result;
+      console.log(this.productList);
       this.amount = this.calculateAmount();
       return this.productList;
     },
@@ -107,7 +108,8 @@ export default {
         buyer_name: "홍길동",
         buyer_tel: "010-4242-4242",
         buyer_addr: "서울특별시 강남구 신사동",
-        buyer_postcode: "01181"
+        buyer_postcode: "01181",
+            custom_data: this.customData
       }, async rsp => { // callback
         if (rsp.success) {
           // 결제 성공 시 로직,
@@ -126,18 +128,14 @@ export default {
       )},
     calculateAmount: function (){
       let amount = 0;
+
       this.productList.forEach((product) => {
-          amount += product.price;
-          // console.log(product);
+        amount += product.price;
+        this.customData.push({"id": product.productIdx, "name": product.productName, "price":product.price});
       })
-      // console.log(amount);
       return amount;
     },
 
-    requestPay: function () {
-
-
-    }
   },
 
     components: {

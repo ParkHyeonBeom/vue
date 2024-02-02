@@ -68,14 +68,8 @@ export default {
   },
   methods: {
     async getProductList(page, size) {
-      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoiZGlkZ2hsdHMxMUBnbWFpbC5jb20iLCJuYW1lIjoidGVzdDEiLCJwaG9uZU51bSI6IjAxMC0xMTExLTExMTEiLCJhZGRyZXNzIjoi7ISc7Jq47IucIiwiYXV0aG9yaXR5IjoiU0VMTEVSIiwiaWF0IjoxNzA2NzY2OTM4LCJleHAiOjE3MDcwNjY5Mzh9.n2rgrbetZQU6gcRhJ-FG8f7nsilh3zVXi6cdZDzMSGM";
-      let response = await axios.get("http://localhost:8080/product/list?page=" + page + "&size=" + size, {
-        headers: {
-          Authorization: token
-        }
-      });
+      let response = await axios.get("http://localhost:8080/product/list?page=" + page + "&size=" + size);
       console.log(response.data.result);
-
       this.productList =  response.data.result;
       return this.productList;
     }

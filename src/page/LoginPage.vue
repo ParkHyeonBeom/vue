@@ -7,22 +7,23 @@
             <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
           </router-link>
         </div>
-        <form id="loginForm">
-          <input type="text" placeholder="이메일" id="이메일" required>
-          <input type="password" placeholder="비밀번호" id="비밀번호" required>
+        <form id="loginForm" @submit.prevent>
+          <input v-model="member.email" type="text" placeholder="이메일" id="이메일" required>
+          <input v-model="member.password" type="password" placeholder="비밀번호" id="비밀번호" required>
           <br>
           <br>
-          <button type="submit">로그인</button>
+          <button @click="login(member)">로그인</button>
         </form>
         <br>
         <div>
           <a href="/users/password/new">비밀번호 재설정</a>
           <router-link to="/member/signup">
-            <a href="/normal_users/new">회원가입</a>
+            <a href="/normal_users/new">일반 회원가입</a>
           </router-link>
+            <a href="/seller_registration.html">판매자 회원가입</a>
+
         </div>
         <br>
-        <div class="confortLogin">SNS계정으로 간편 로그인 / 회원가입</div>
         <div class="sns-buttons">
           <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
           <a href="/users/auth/kakao" class="kakao"><img src="../../public/icon/kakao.png" alt="Kakao 로고"></a>
@@ -30,21 +31,36 @@
         </div>
         <div class="loginError">로그인에 문제가 있으신가요?</div>
         <hr class="line">
-        <div class="serchOrder" onclick="toggleOrderSearch()">비회원 주문 조회하기</div>
-        <div class="order-search-container">
-          <input type="text" placeholder="주문번호" id="orderNumber">
-          <input type="text" placeholder="이메일" id="orderEmail">
-          <br>
-          <button type="button" onclick="searchOrder()">주문 조회</button>
-        </div>
+        <div class="serchOrder">저희 pampam 공동구메 서비스는 엄선된 제품만 취급합니다.</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import {toRaw} from "vue";
+
 export default {
   name: 'LoginPage',
+  data() {
+    return {
+      member: {
+        email: "",
+        password: ""
+      }
+    }
+  },
+  methods: {
+    async login(member) {
+      member = toRaw(member);
+      let response = await axios.post("http://localhost:7010/member/login", {
+        member
+      })
+
+      console.log(response);
+    }
+  }
 }
 </script>
 

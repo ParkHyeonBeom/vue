@@ -1,129 +1,132 @@
 <template>
-  <div class="login-container">
-    <div class="content-container">
-      <div class="text-with-image">
-        <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
+  <div class="signup-content">
+    <div class="signup-container">
+      <div class="content-container">
+        <div class="text-with-image">
+          <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
+        </div>
+        <br>
+        <div>
+          <div class="signupfont"><h3>회원가입</h3></div>
+        </div>
+        <br>
+        <div class="confortLogin">SNS계정으로 간편 회원가입</div>
+        <div class="sns-buttons">
+          <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
+          <a href="/users/auth/kakao" class="kakao"><img src="../../public/icon/kakao.png" alt="Kakao 로고"></a>
+          <a href="/users/auth/naver" class="naver"><img src="../../public/icon/naver.png" alt="Naver 로고"></a>
+        </div>
+        <hr class="line">
       </div>
       <br>
-      <div>
-        <div class="signupfont"><h3>회원가입</h3></div>
-      </div>
-      <br>
-      <div class="confortLogin">SNS계정으로 간편 회원가입</div>
-      <div class="sns-buttons">
-        <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
-        <a href="/users/auth/kakao" class="kakao"><img src="../../public/icon/kakao.png" alt="Kakao 로고"></a>
-        <a href="/users/auth/naver" class="naver"><img src="../../public/icon/naver.png" alt="Naver 로고"></a>
-      </div>
-      <hr class="line">
-    </div>
-    <br>
 
-    <form id="signupForm">
-      <div class="insertEmail"><h5>이메일</h5></div>
-      <input type="text" placeholder="이메일" id="이메일" required>
-      <br>
-      <div class="emailAuth">
-        <button class="emailAuth" name="emailAuth" type="button">이메일 인증하기</button>
-      </div>
+      <form id="signupForm">
+        <div class="insertEmail"><h5>이메일</h5></div>
+        <input type="text" placeholder="이메일" id="이메일" required>
+        <br>
+        <div class="emailAuth">
+          <button class="emailAuth" name="emailAuth" type="button">이메일 인증하기</button>
+        </div>
 
-      <div class="insertpassword"><h5>비밀번호</h5></div>
-      <div class="insertpassword2">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</div>
-      <input type="text" placeholder="비밀번호" id="비밀번호" required>
-      <br>
+        <div class="insertpassword"><h5>비밀번호</h5></div>
+        <div class="insertpassword2">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</div>
+        <input type="text" placeholder="비밀번호" id="비밀번호" required>
+        <br>
 
-      <div class="insertcheck"><h5>비밀번호 확인</h5></div>
-      <input type="password" placeholder="비밀번호 확인" id="비밀번호 확인" required>
-      <br>
+        <div class="insertcheck"><h5>비밀번호 확인</h5></div>
+        <input type="password" placeholder="비밀번호 확인" id="비밀번호 확인" required>
+        <br>
 
-      <div class="insertnick"><h5>닉네임</h5></div>
-      <div class="insertnick2">다른 유저와 겹치지 않도록 입력해주세요. (2~15자)</div>
-      <input type="password" placeholder="별명 (2~15자)" id="닉네임" required>
-      <br>
+        <div class="insertnick"><h5>닉네임</h5></div>
+        <div class="insertnick2">다른 유저와 겹치지 않도록 입력해주세요. (2~15자)</div>
+        <input type="password" placeholder="별명 (2~15자)" id="닉네임" required>
+        <br>
 
-      <div class="insertnick"><h5>사업자 등록 번호</h5></div>
-      <div class="insertnick2">사업자 번호를 정확하게 기입해주세요. (10자)</div>
-      <input type="password" placeholder="사업자 등록 번호 (10자)" id="사업자 등록 번호" required>
-      <br>
+        <div class="insertnick"><h5>사업자 등록 번호</h5></div>
+        <div class="insertnick2">사업자 번호를 정확하게 기입해주세요. (10자)</div>
+        <input type="password" placeholder="사업자 등록 번호 (10자)" id="사업자 등록 번호" required>
+        <br>
 
-      <div class="consent-container">
-        <label class="consent-label"><h5>약관동의</h5></label>
-        <div class="consent-options">
-          <div class="consent-option">
-            <label class="checkbox-label">
-              <div class="checkbox-wrapper">
-                <div class="check-icon"><span class="_check_12"></span></div>
-                <input type="checkbox" value="false" field="[object Object]" name="agreeAll" class="checkbox-input">
-              </div>
-              <span class="consent-text">
+        <div class="consent-container">
+          <label class="consent-label"><h5>약관동의</h5></label>
+          <div class="consent-options">
+            <div class="consent-option">
+              <label class="checkbox-label">
+                <div class="checkbox-wrapper">
+                  <div class="check-icon"><span class="_check_12"></span></div>
+                  <input type="checkbox" value="false" field="[object Object]" name="agreeAll" class="checkbox-input">
+                </div>
+                <span class="consent-text">
                     <h4>전체동의<span class="additional-consent"> &nbsp; 선택항목에 대한 동의 포함</span></h4>
                 </span>
-            </label>
-          </div>
-          <hr class="consent-divider">
-          <div class="consent-option">
-            <label class="checkbox-label">
-              <div class="checkbox-wrapper">
-                <div class="check-icon"><span class="_check_12"></span></div>
-                <input type="checkbox" value="false" field="[object Object]" name="agree1" class="checkbox-input">
-              </div>
-              <span class="consent-text" required>만 14세 이상입니다 (필수)</span>
-            </label>
-          </div>
-          <div class="consent-option">
-            <label class="checkbox-label">
-              <div class="checkbox-wrapper">
-                <div class="check-icon"><span class="_check_12"></span></div>
-                <input type="checkbox" value="false" field="[object Object]" name="agree2" class="checkbox-input">
-              </div>
-              <span class="consent-text" required>이용약관 (필수)</span>
-              <a target="_blank" href="/usepolicy" class="external-link"><span class="_chevron_right_18"></span></a>
-            </label>
-          </div>
-          <div class="consent-option">
-            <label class="checkbox-label">
-              <div class="checkbox-wrapper">
-                <div class="check-icon"><span class="_check_12"></span></div>
-                <input type="checkbox" value="false" field="[object Object]" name="agree3" class="checkbox-input">
-              </div>
-              <span class="consent-text" required>개인정보수집 및 이용동의 (필수)</span>
-              <a target="_blank" href="/privacy?type=register" class="external-link"><span class="_chevron_right_18"></span></a>
-            </label>
-          </div>
-          <div class="consent-option">
-            <label class="checkbox-label">
-              <div class="checkbox-wrapper">
-                <div class="check-icon"><span class="_check_12"></span></div>
-                <input type="checkbox" value="false" field="[object Object]" name="agreeMarketUsage" class="checkbox-input">
-              </div>
-              <span class="consent-text">개인정보 마케팅 활용 동의 (선택)</span>
-              <a target="_blank" href="/privacy?type=register_marketing" class="external-link"><span class="_chevron_right_18"></span></a>
-            </label>
-          </div>
-          <div class="consent-option">
-            <label class="checkbox-label">
-              <div class="checkbox-wrapper">
-                <div class="check-icon"><span class="_check_12"></span></div>
-                <input type="checkbox" value="false" field="[object Object]" name="agreePromotion" class="checkbox-input">
-              </div>
-              <span class="consent-text">이벤트, 쿠폰, 특가 알림 메일 및 SMS 등 수신 (선택)
+              </label>
+            </div>
+            <hr class="consent-divider">
+            <div class="consent-option">
+              <label class="checkbox-label">
+                <div class="checkbox-wrapper">
+                  <div class="check-icon"><span class="_check_12"></span></div>
+                  <input type="checkbox" value="false" field="[object Object]" name="agree1" class="checkbox-input">
+                </div>
+                <span class="consent-text" required>만 14세 이상입니다 (필수)</span>
+              </label>
+            </div>
+            <div class="consent-option">
+              <label class="checkbox-label">
+                <div class="checkbox-wrapper">
+                  <div class="check-icon"><span class="_check_12"></span></div>
+                  <input type="checkbox" value="false" field="[object Object]" name="agree2" class="checkbox-input">
+                </div>
+                <span class="consent-text" required>이용약관 (필수)</span>
+                <a target="_blank" href="/usepolicy" class="external-link"><span class="_chevron_right_18"></span></a>
+              </label>
+            </div>
+            <div class="consent-option">
+              <label class="checkbox-label">
+                <div class="checkbox-wrapper">
+                  <div class="check-icon"><span class="_check_12"></span></div>
+                  <input type="checkbox" value="false" field="[object Object]" name="agree3" class="checkbox-input">
+                </div>
+                <span class="consent-text" required>개인정보수집 및 이용동의 (필수)</span>
+                <a target="_blank" href="/privacy?type=register" class="external-link"><span class="_chevron_right_18"></span></a>
+              </label>
+            </div>
+            <div class="consent-option">
+              <label class="checkbox-label">
+                <div class="checkbox-wrapper">
+                  <div class="check-icon"><span class="_check_12"></span></div>
+                  <input type="checkbox" value="false" field="[object Object]" name="agreeMarketUsage" class="checkbox-input">
+                </div>
+                <span class="consent-text">개인정보 마케팅 활용 동의 (선택)</span>
+                <a target="_blank" href="/privacy?type=register_marketing" class="external-link"><span class="_chevron_right_18"></span></a>
+              </label>
+            </div>
+            <div class="consent-option">
+              <label class="checkbox-label">
+                <div class="checkbox-wrapper">
+                  <div class="check-icon"><span class="_check_12"></span></div>
+                  <input type="checkbox" value="false" field="[object Object]" name="agreePromotion" class="checkbox-input">
+                </div>
+                <span class="consent-text">이벤트, 쿠폰, 특가 알림 메일 및 SMS 등 수신 (선택)
                     <div class="selection"></div></span>
-            </label>
+              </label>
+            </div>
           </div>
         </div>
-      </div>
-
-      <br>
-      <router-link to="/verify">
-      <button type="submit">회원 가입하기</button>
-      </router-link>
-    </form>
+        <br>
+        <router-link to="/verify">
+          <button type="submit">회원 가입하기</button>
+        </router-link>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'SignUpPage',
+  components: {},
 }
 
 // document.addEventListener('DOMContentLoaded', function () {
@@ -170,7 +173,12 @@ body {
   width: 100%;
 }
 
-.login-container {
+.signup-content {
+  justify-content: center;
+  display: flex;
+}
+
+.signup-container {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
@@ -200,11 +208,11 @@ body {
   border-radius: 20%;
 }
 
-.login-container h2 {
+.signup-container h2 {
   color: #333;
 }
 
-.login-container input {
+.signup-container input {
   width: 100%;
   padding: 10px;
   margin-bottom: 0px;
@@ -213,7 +221,7 @@ body {
   border-radius: 4px;
 }
 
-.login-container button {
+.signup-container button {
   width: 100%;
   padding: 10px;
   background-color: #18cc3c;
@@ -223,7 +231,7 @@ body {
   cursor: pointer;
 }
 
-.login-container button:hover {
+.signup-container button:hover {
   background-color: #00ab03;
 }
 

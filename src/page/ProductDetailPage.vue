@@ -1,4 +1,5 @@
 <template>
+  <HeaderComponent/>
   <div class="production-selling">
     <div class="production-selling-overview container">
       <nav class="commerce-category-breadcrumb-wrap production-selling-overview__category">
@@ -11,7 +12,7 @@
             </svg>
           </li>
           <li class="commerce-category-breadcrumb__entry">
-            <a class="link" href="/store/category?category_id=28050000&amp;affect_type= ProductSaleDetail&amp;affect_id=672428">장스탠드</a>
+            <a class="link" href="/store/category?category_id=28050000&amp;affect_type= ProductSaleDetail&amp;affect_id=672428">{{ product.productName }}</a>
           </li>
         </ol>
       </nav>
@@ -31,7 +32,7 @@
         <div class="production-selling-header">
           <h1 class="production-selling-header__title">
             <p class="production-selling-header__title__brand-wrap">
-              <a class="production-selling-header__title__brand" href="/brands/home?query=%EC%95%84%EC%9A%B0%EC%96%B4%EB%A3%B8&amp;affect_type=ProductSaleDetail&amp;affect_id=672428">아우어룸</a>
+              <a class="production-selling-header__title__brand" href="/brands/home?query=%EC%95%84%EC%9A%B0%EC%96%B4%EB%A3%B8&amp;affect_type=ProductSaleDetail&amp;affect_id=672428">{{ product.productName }}</a>
             </p>
             <div class="production-selling-header__title__name-wrap">
               <span class="production-selling-header__title__name">*스마트전구증정* 머쉬룸 장스탠드 순수 국내자체제작 조명 _7colors</span>
@@ -56,22 +57,22 @@
 
           <div class="production-selling-header__content">
             <div class="production-selling-header__price">
-                                <span class="production-selling-header__price__price-wrap">
-                                    <span class="production-selling-header__price__discount">
-                                        <span class="number">15</span><span class="percent">%</span>
-                                    </span>
-                                    <del class="production-selling-header__price__original">
-                                        <span class="number">152,640</span>
-                                        <span class="won">원</span>
-                                    </del>
-                                            <span class="production-selling-header__price__separator"></span>
-                                            <div class="production-selling-header__price__price-value-wrap">
-                                                <div class="production-selling-header__price__price">
-                                                    <span class="number">129,000</span>
-                                                    <span class="won">원</span>
-                                                </div>
-                                            </div>
-                                        </span>
+              <span class="production-selling-header__price__price-wrap">
+                <span class="production-selling-header__price__discount">
+                  <span class="number">15</span><span class="percent">%</span>
+                </span>
+                <del class="production-selling-header__price__original">
+                  <span class="number">{{ product.price }}</span>
+                  <span class="won">원</span>
+                </del>
+                  <span class="production-selling-header__price__separator"></span>
+                    <div class="production-selling-header__price__price-value-wrap">
+                      <div class="production-selling-header__price__price">
+                        <span class="number">129,000</span>
+                        <span class="won">원</span>
+                      </div>
+                    </div>
+                  </span>
             </div>
           </div>
         </div>
@@ -81,54 +82,56 @@
               <span>배송</span>
             </div>
             <div class="production-selling-header__delivery__content-wrap">
-                            <span class="production-selling-header__delivery__fee">
-                                <b>무료배송</b>
-                            </span>
+              <span class="production-selling-header__delivery__fee">
+                <b>무료배송</b>
+              </span>
               <div class="_2SUYq production-selling-header__delivery__today-departure__dropdown">
                 <div class="production-selling-header__delivery__today-departure__header">
-                                    <span class="text">지금 주문시
-                                        <span class="active">내일 출발</span>
-                                    </span>
+                  <span class="text">지금 주문시
+                    <span class="active">내일 출발</span>
+                  </span>
                 </div>
               </div>
               <span class="production-selling-header__delivery__type">
-                                <span>일반택배</span>
-                            </span>
+                <span>일반택배</span>
+              </span>
               <span class="production-selling-header__delivery__disclaimer-wrap">
-                                <span class="production-selling-header__delivery__disclaimer">
-                                    <svg class="check-icon" width="10" height="9" fill="none" preserveAspectRatio="xMidYMid meet">
-                                        <path d="M1 3.83l2.153 3.03a1 1 0 001.627.005L9 1" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                    <span>제주도/도서산간 지역 20,000원</span>
-                                </span>
-                            </span>
+                <span class="production-selling-header__delivery__disclaimer">
+                  <svg class="check-icon" width="10" height="9" fill="none" preserveAspectRatio="xMidYMid meet">
+                    <path d="M1 3.83l2.153 3.03a1 1 0 001.627.005L9 1" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <span>제주도/도서산간 지역 20,000원</span>
+                </span>
+            </span>
               <span class="production-selling-header__delivery__expectation-section">
-                                <span class="production-selling-header__delivery__expectation-wrap">
-                                    <span class="production-selling-header__delivery__expectation__header">
-                                        <svg class="delivery-time-icon" width="24" height="24" fill="none" preserveAspectRatio="xMidYMid meet">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.303 5.04l.394.92L7 8.83V12a.5.5 0 01-1 0V8.17l7.303-3.13z" fill="#00B8F0"></path>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.197 4.628a.5.5 0 00-.394 0L4.269 7 10 9.456 15.73 7l-2.427-1.04-3.106-1.332zM3.5 14.341V7.758l6 2.572v6.912L3.803 14.8a.5.5 0 01-.303-.46zm7 2.9l1.534-.657a5 5 0 014.466-5.56V7.759l-6 2.572v6.912zm.09 1.05l1.664-.713A5.002 5.002 0 0022 16a5 5 0 00-4.5-4.975V7.659a1.5 1.5 0 00-.91-1.378l-2.893-1.24-3.106-1.332a1.5 1.5 0 00-1.182 0l-6 2.572A1.5 1.5 0 002.5 7.659v6.682c0 .6.358 1.142.91 1.378l6 2.572a1.5 1.5 0 001.18 0zM17 20a4 4 0 100-8 4 4 0 000 8zm.5-6.5a.5.5 0 00-1 0v2H15a.5.5 0 000 1h2a.5.5 0 00.5-.5v-2.5z" fill="#3F474D"></path>
-                                        </svg>
-                                        <span class="text">
-                                        <span class="date">1/29(월)<!-- --> </span>
-                                            도착 예정 <b>87<!-- -->%</b></span>
-                                        <svg class="arrow-icon" width="16" height="16" fill="none" preserveAspectRatio="xMidYMid meet">
-                                            <path d="M13 11.333L8 6.501l-5 4.832-1-.917 6-5.75 6 5.75-1 .917z" fill="#828C94"></path>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </span>
+                <span class="production-selling-header__delivery__expectation-wrap">
+                  <span class="production-selling-header__delivery__expectation__header">
+                    <svg class="delivery-time-icon" width="24" height="24" fill="none" preserveAspectRatio="xMidYMid meet">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M13.303 5.04l.394.92L7 8.83V12a.5.5 0 01-1 0V8.17l7.303-3.13z" fill="#00B8F0"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M10.197 4.628a.5.5 0 00-.394 0L4.269 7 10 9.456 15.73 7l-2.427-1.04-3.106-1.332zM3.5 14.341V7.758l6 2.572v6.912L3.803 14.8a.5.5 0 01-.303-.46zm7 2.9l1.534-.657a5 5 0 014.466-5.56V7.759l-6 2.572v6.912zm.09 1.05l1.664-.713A5.002 5.002 0 0022 16a5 5 0 00-4.5-4.975V7.659a1.5 1.5 0 00-.91-1.378l-2.893-1.24-3.106-1.332a1.5 1.5 0 00-1.182 0l-6 2.572A1.5 1.5 0 002.5 7.659v6.682c0 .6.358 1.142.91 1.378l6 2.572a1.5 1.5 0 001.18 0zM17 20a4 4 0 100-8 4 4 0 000 8zm.5-6.5a.5.5 0 00-1 0v2H15a.5.5 0 000 1h2a.5.5 0 00.5-.5v-2.5z" fill="#3F474D"></path>
+                      </svg>
+                        <span class="text">
+                        <span class="date">1/29(월)<!-- --> </span>
+                          도착 예정 <b>87<!-- -->%</b></span>
+                        <svg class="arrow-icon" width="16" height="16" fill="none" preserveAspectRatio="xMidYMid meet">
+                          <path d="M13 11.333L8 6.501l-5 4.832-1-.917 6-5.75 6 5.75-1 .917z" fill="#828C94"></path>
+                      </svg>
+                  </span>
+                </span>
+              </span>
             </div>
           </div>
         </div>
-
         <div class="production-selling-option-form production-selling-overview__option-form">
           <p class="css-49v6aj ejhg2ki2">
             <span class="css-7c0zb9 ejhg2ki1">주문금액</span>
             <span class="css-q02jxk ejhg2ki0">
-                            <span>0</span>원</span>
+              <span>0</span>원</span>
           </p>
-          <div class="production-selling-option-form__footer"><button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button">장바구니</button><button class="button button--color-blue button--size-55 button--shape-4" type="button">바로구매</button></div>
+          <div class="production-selling-option-form__footer">
+            <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn">장바구니</button>
+            <button class="button button--color-blue button--size-55 button--shape-4" type="button">바로구매</button>
+          </div>
         </div>
       </div>
       <div class="product-details">
@@ -279,16 +282,44 @@
       </div>
     </div>
   </div>
+  <FooterComponent/>
 </template>
 
 <script>
-// import HeaderComponent from './components/HeaderComponent.vue';
-// import FooterComponent from './components/FooterComponent.vue';
-// import axios from 'axios';
-
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
+import axios from "axios";
 
 export default {
   name: 'ProductDetailPage',
+  data() {
+    return { product: {} }
+  },
+  components: {HeaderComponent, FooterComponent},
+  methods: {
+    async productCartIn(productIdx) {
+      let token = "Bearer "
+      let response = await axios.post("http://localhost:8080/cart/in/" + productIdx, {
+        headers: {
+          Authorization: token
+        },
+      })
+      console.log(response.data.result);
+    },
+    async readProductDetail(productIdx) {
+      let token = "Bearer "
+      let response = await axios.get("http://localhost:8080/" + productIdx, {
+        headers: {
+          Authorization: token
+        },
+      })
+      console.log(response.data.result);
+      this.product = response.data.result;
+    }
+  },
+  mounted() {
+    this.readProductDetail(1);
+  }
 }
 </script>
 
@@ -313,185 +344,6 @@ a{
 p.basic:hover{
   color:rgb(24, 204, 60);
 }
-
-.header-container{
-  height: 80.75px;
-  flex-direction: row;
-  display: flex;
-  margin-left: 105px;
-}
-
-.logo{
-  width: 100px;
-  height: 90px;
-  margin-left: 30px;
-  margin-right:30px;
-}
-
-.center{
-
-  display: flex;
-  flex-direction: row;
-  width : 450px;
-  height: 80.75px;
-}
-
-.center-first{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -10px;
-  margin-top: 15px;
-}
-
-.center-second{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -18px;
-  margin-top: 15px;
-}
-
-.center-third{
-  width : 120px;
-  height : 80.75px;;
-  margin-left: -15px;
-  margin-top: 15px;
-}
-
-
-.right{
-  display: flex;
-  flex-direction: row;
-  width : 1350px;
-  height: 80.75px;
-}
-
-.right-search{
-  width : 300px;
-  height : 45px   ;
-  margin-left: 73px;
-  margin-top: 18px;
-  border: 1px solid #DADDE0;
-}
-
-.right-search-left{
-  margin-left: 5px;
-  margin-top: 8px;
-}
-
-.right-search-right{
-  margin-top: -42px;
-  margin-left: -75px;
-}
-
-.right-cart{
-  width : 30px;
-  height : 30px;
-  margin-left: 15px;
-  margin-top: 18px;
-}
-
-.right-login{
-  width : 42px;
-  height : 30px;
-  margin-left: 25px;
-  margin-top: 28px;
-}
-
-.right-signup{
-  width : 60px;
-  height : 30px;
-  margin-left: 15px;
-  margin-top: 28px;
-}
-
-.right-customercenter{
-  width : 60px;
-  height : 30px;
-  margin-left: 15px;
-  margin-top: 28px;
-}
-
-.right-postWrite{
-  margin-left: 30px;
-  margin-top: 17px;
-}
-
-.mybutton{
-  color:white; /* 원하는 색상으로 설정 */
-  text-align: center;
-  border-radius: 5px 5px 5px 5px;
-  margin-left: -15px;
-}
-
-.header-sub{
-  border-top:1px solid gainsboro;
-  height: 80.75px;
-  flex-direction: row;
-  display: flex;
-  font-weight: 200;
-}
-
-.header-shoppingHome{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: 145px;
-  margin-top: 15px;
-}
-.header-category{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -33px;
-  margin-top: 15px;
-}
-.header-best{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -33px;
-  margin-top: 15px;
-}
-.header-todayDeal{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -33px;
-  margin-top: 15px;
-}
-.header-market{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -22px;
-  margin-top: 15px;
-}
-.header-good{
-  width : 100px;
-  height : 80.75px;
-  margin-left: -25px;
-  margin-top: 15px;
-}
-.header-delivery{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -25px;
-  margin-top: 15px;
-}
-.header-room{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -25px;
-  margin-top: 15px;
-}
-.header-premium{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -25px;
-  margin-top: 15px;
-}
-.header-event{
-  width : 100px;
-  height : 80.75px;;
-  margin-left: -25px;
-  margin-top: 15px;
-}
-/* header end */
 
 .production-selling {
   position: relative;

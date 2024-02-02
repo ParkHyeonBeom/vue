@@ -15,8 +15,16 @@ const router = createRouter({
         { path: '/member/login', component: LoginPage },
         { path: '/member/signup', component: SignUpPage },
         { path: '/cart', component: CartPage},
-        { path: '/product/id', component: ProductDetailPage},
+        { path: '/product/:id', component: ProductDetailPage},
     ]
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.fullPath === "/product" && sessionStorage.getItem("token") == null) {
+        next("/member/login");
+    } else {
+        next();
+    }
 })
 
 export default router;

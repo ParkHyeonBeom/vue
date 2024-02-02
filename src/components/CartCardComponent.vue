@@ -61,9 +61,7 @@ export default {
 </script>
 
 <style>
-.commerce-cart__content__group-list {
-  list-style: none;
-}
+
 
 .commerce-cart__group__item-list {
   display: block;
@@ -74,17 +72,6 @@ export default {
   margin-inline-end: 0px;
   /* padding-inline-start: 40px; */
   list-style: none;
-  background-color: #fff;
-}
-
-.commerce-cart__group__header {
-  padding: 10px 0;
-  border-bottom: 1px solid #ededed;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 18px;
-  text-align: center;
-  color: #424242;
   background-color: #fff;
 }
 

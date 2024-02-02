@@ -1,36 +1,38 @@
 <template>
-  <div class="login-container">
-    <div class="content-container">
-      <div class="text-with-image">
-        <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
-      </div>
-      <form id="loginForm">
-        <input type="text" placeholder="이메일" id="이메일" required>
-        <input type="password" placeholder="비밀번호" id="비밀번호" required>
+  <div class="login-content">
+    <div class="signup-container">
+      <div class="content-container">
+        <div class="text-with-image">
+          <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
+        </div>
+        <form id="loginForm">
+          <input type="text" placeholder="이메일" id="이메일" required>
+          <input type="password" placeholder="비밀번호" id="비밀번호" required>
+          <br>
+          <br>
+          <button type="submit">로그인</button>
+        </form>
         <br>
+        <div>
+          <a href="/users/password/new">비밀번호 재설정</a>
+          <a href="/normal_users/new">회원가입</a>
+        </div>
         <br>
-        <button type="submit">로그인</button>
-      </form>
-      <br>
-      <div>
-        <a href="/users/password/new">비밀번호 재설정</a>
-        <a href="/normal_users/new">회원가입</a>
-      </div>
-      <br>
-      <div class="confortLogin">SNS계정으로 간편 로그인 / 회원가입</div>
-      <div class="sns-buttons">
-        <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
-        <a href="/users/auth/kakao" class="kakao"><img src="../../public/icon/kakao.png" alt="Kakao 로고"></a>
-        <a href="/users/auth/naver" class="naver"><img src="../../public/icon/naver.png" alt="Naver 로고"></a>
-      </div>
-      <div class="loginError">로그인에 문제가 있으신가요?</div>
-      <hr class="line">
-      <div class="serchOrder" onclick="toggleOrderSearch()">비회원 주문 조회하기</div>
-      <div class="order-search-container">
-        <input type="text" placeholder="주문번호" id="orderNumber">
-        <input type="text" placeholder="이메일" id="orderEmail">
-        <br>
-        <button type="button" onclick="searchOrder()">주문 조회</button>
+        <div class="confortLogin">SNS계정으로 간편 로그인 / 회원가입</div>
+        <div class="sns-buttons">
+          <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
+          <a href="/users/auth/kakao" class="kakao"><img src="../../public/icon/kakao.png" alt="Kakao 로고"></a>
+          <a href="/users/auth/naver" class="naver"><img src="../../public/icon/naver.png" alt="Naver 로고"></a>
+        </div>
+        <div class="loginError">로그인에 문제가 있으신가요?</div>
+        <hr class="line">
+        <div class="serchOrder" onclick="toggleOrderSearch()">비회원 주문 조회하기</div>
+        <div class="order-search-container">
+          <input type="text" placeholder="주문번호" id="orderNumber">
+          <input type="text" placeholder="이메일" id="orderEmail">
+          <br>
+          <button type="button" onclick="searchOrder()">주문 조회</button>
+        </div>
       </div>
     </div>
   </div>
@@ -40,30 +42,6 @@
 export default {
   name: 'LoginPage',
 }
-
-// function toggleOrderSearch() {
-//   var orderSearchContainer = document.querySelector('.order-search-container');
-//   var isVisible = orderSearchContainer.style.maxHeight !== '0px';
-//
-//   if (isVisible) {
-//     orderSearchContainer.style.maxHeight = '0';
-//     orderSearchContainer.style.opacity = '0';
-//   } else {
-//     orderSearchContainer.style.maxHeight = '200px'; // Adjust the height as needed
-//     orderSearchContainer.style.opacity = '1';
-//   }
-// }
-//
-// function searchOrder() {
-//   // 주문 조회 기능 구현
-//   var orderNumber = document.getElementById('orderNumber').value;
-//   var orderEmail = document.getElementById('orderEmail').value;
-//   // 실제로는 이 정보를 서버로 전송하여 주문 조회를 수행해야 합니다.
-//   // 여기서는 간단하게 콘솔에 출력하는 예시를 보여드립니다.
-//   console.log('주문번호:', orderNumber);
-//   console.log('이메일:', orderEmail);
-//   // 실제로는 서버로 전송 및 응답 처리를 구현해야 합니다.
-// }
 </script>
 
 <style>
@@ -71,18 +49,12 @@ export default {
   font-family: 'GmarketSans';
 }
 
-body {
-  width: 100%;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
+.login-content {
   justify-content: center;
-  height: 100vh;
+  display: flex;
 }
 
-.login-container {
+.signup-container {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
@@ -107,20 +79,16 @@ body {
   border-radius: 20%;
 }
 
-.login-container h2 {
-  color: #333;
-}
-
-.login-container input {
+.signup-container input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.login-container button {
+.signup-container button {
   width: 100%;
   padding: 10px;
   background-color: #18cc3c;
@@ -130,7 +98,7 @@ body {
   cursor: pointer;
 }
 
-.login-container button:hover {
+.signup-container button:hover {
   background-color: #00ab03;
 }
 

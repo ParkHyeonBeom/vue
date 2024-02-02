@@ -112,7 +112,7 @@ a{
 }
 .footer{
   padding: 40px 40px;
-  background-color: #F7F9FA;
+  background-color: #e8e9ea;
 
   box-sizing: border-box;
   font-size: 12px;
@@ -121,9 +121,6 @@ a{
   grid-template-columns: 1fr 1px 1fr 1px 2fr;
   grid-column-gap: 30px;
 }
-/* .footer-left{
-    padding: 0 40px;
-} */
 
 .customer-service-btn{
   font-size: 18px;

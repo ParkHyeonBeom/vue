@@ -2,11 +2,11 @@
   <div class="body-deadline-item-info">
     <div>
       <article class="deadline-item">
-        <a class="deadline-item-link" href="./product.html"></a>
+        <a class="deadline-item-link" :href="`product/`+ product.idx"></a>
         <div class="deadline-item-image">
           <div class="deadline-item-image-show">
             <div class="deadline-item-image-info">
-              <img class="image" src="../../public/image/fish.jpg" alt="">
+              <img class="image" :src="product.filename" alt=""/>
               <div class="deadline-item-image-dark-overlay"></div>
               <div class="deadline-item-timer">
                 <div>12:12:12 남음</div>
@@ -17,16 +17,16 @@
         <div class="deadline-item-content">
           <div>
             <h1 class="deadline-item-header">
-              <span class="deadline-item-header-brand">진짜 맛있는 영광 보리굴비</span>
-              <span class="deadline-item-header-name">공동구매시 최대 30% 할인가로 제공</span>
+              <span class="deadline-item-header-brand">{{ product.productName }}</span>
+              <span class="deadline-item-header-name">{{ product.productInfo }}</span>
             </h1>
             <span class="deadline-item-price">
-                                        <span class="deadline-item-price-rate">
-                                            30
-                                            <span class="percentage">%</span>
-                                        </span>
-                                        <span class="deadline-item-price-price">30,000</span>
-                                    </span>
+                <span class="deadline-item-price-rate">
+                    30
+                    <span class="percentage">%</span>
+                </span>
+                <span class="deadline-item-price-price">{{ product.price }}</span>
+            </span>
             <div class="deadline-item-stats">
               <p class="deadline-item-stats-info">
                 <strong>4.7</strong>
@@ -46,6 +46,9 @@
 <script>
 export default {
   name: 'MainCardComponent',
+  props: [
+      "product"
+  ]
 }
 </script>
 

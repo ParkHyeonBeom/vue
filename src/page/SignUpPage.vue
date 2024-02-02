@@ -24,15 +24,15 @@
 
       <form id="signupForm">
         <div class="insertEmail"><h5>이메일</h5></div>
-        <input type="text" placeholder="이메일" id="이메일" required>
+        <input v-model="member.email" type="text" placeholder="이메일" id="이메일" required>
         <br>
         <div class="emailAuth">
-          <button class="emailAuth" name="emailAuth" type="button">이메일 인증하기</button>
+          <button class="emailAuth" name="emailAuth" type="button">이메일 중복검사</button>
         </div>
 
         <div class="insertpassword"><h5>비밀번호</h5></div>
         <div class="insertpassword2">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</div>
-        <input type="text" placeholder="비밀번호" id="비밀번호" required>
+        <input v-model="member.password" type="password" placeholder="비밀번호" id="비밀번호" required>
         <br>
 
         <div class="insertcheck"><h5>비밀번호 확인</h5></div>
@@ -41,7 +41,7 @@
 
         <div class="insertnick"><h5>닉네임</h5></div>
         <div class="insertnick2">다른 유저와 겹치지 않도록 입력해주세요. (2~15자)</div>
-        <input type="password" placeholder="별명 (2~15자)" id="닉네임" required>
+        <input v-model="member.consumerName" type="password" placeholder="별명 (2~15자)" id="닉네임" required>
         <br>
 
         <div class="insertnick"><h5>사업자 등록 번호</h5></div>
@@ -117,7 +117,7 @@
         </div>
         <br>
         <router-link to="/verify">
-          <button type="submit">회원 가입하기</button>
+          <button @click="signUp(member)" type="submit">회원 가입하기</button>
         </router-link>
       </form>
     </div>
@@ -126,36 +126,37 @@
 
 <script>
 
+import axios from "axios";
+
 export default {
   name: 'SignUpPage',
+  data() {
+    return {
+      member: {
+        email: "",
+        password: "",
+        consumerName:"",
+      }
+    }
+  },
+  methods: {
+    async checkEmail(email) {
+      // 이메일 중복 검사
+      let response = await axios.get("http://localhost:8080/member/check?email=" + email)
+      console.log(response);
+    },
+
+    async signUp(member) {
+      console.log(member);
+      let response = await axios.post("http://localhost:7010/member/signup", {
+        member
+      })
+
+      console.log(response);
+}
+  },
   components: {},
 }
-
-// document.addEventListener('DOMContentLoaded', function () {
-//   const agreeAllCheckbox = document.querySelector('[name="agreeAll"]');
-//   const allCheckboxes = document.querySelectorAll('[name^="agree"]');
-//
-//   // Function to check or uncheck all checkboxes
-//   function updateCheckboxes(checked) {
-//     allCheckboxes.forEach(function (checkbox) {
-//       checkbox.checked = checked;
-//     });
-//   }
-//
-//   // Add event listener to the "전체동의" checkbox
-//   agreeAllCheckbox.addEventListener('change', function () {
-//     updateCheckboxes(agreeAllCheckbox.checked);
-//   });
-//
-//   // Add event listener to uncheck "전체동의" only when a checkbox other than "전체동의" is unchecked
-//   allCheckboxes.forEach(function (checkbox) {
-//     checkbox.addEventListener('change', function () {
-//       if (checkbox !== agreeAllCheckbox && !checkbox.checked) {
-//         agreeAllCheckbox.checked = false;
-//       }
-//     });
-//   });
-// });
 </script>
 
 <style>

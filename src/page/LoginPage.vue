@@ -17,7 +17,9 @@
         <br>
         <div>
           <a href="/users/password/new">비밀번호 재설정</a>
-          <a href="/normal_users/new">회원가입</a>
+          <router-link to="/member/signup">
+            <a href="/normal_users/new">회원가입</a>
+          </router-link>
         </div>
         <br>
         <div class="confortLogin">SNS계정으로 간편 로그인 / 회원가입</div>

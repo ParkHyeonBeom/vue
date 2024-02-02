@@ -43,7 +43,9 @@
         <a href="https://www.naver.com/">고객센터</a>
       </div>
       <div class="right-postWrite">
-        <input type="button" class="mybutton" onclick = "location.href = 'www.google.com'" value="글쓰기" style="background-color:rgb(24, 204, 60); border-color: rgb(30, 199, 64); border-width: 1px; width: 91px; height: 45px;" >
+        <router-link to="/product/register">
+        <input type="button" class="mybutton" value="글쓰기" style="background-color:rgb(24, 204, 60); border-color: rgb(30, 199, 64); border-width: 1px; width: 91px; height: 45px;" >
+        </router-link>
       </div>
     </div>
   </div>

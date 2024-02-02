@@ -6,6 +6,7 @@ import SignUpPage from "@/page/SignUpPage.vue";
 import CartPage from "@/page/CartPage.vue";
 import MainPage from "@/page/MainPage.vue";
 import ProductDetailPage from "@/page/ProductDetailPage.vue";
+import ProductRegister from "@/page/ProductRegister.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -16,11 +17,12 @@ const router = createRouter({
         { path: '/member/signup', component: SignUpPage },
         { path: '/cart', component: CartPage},
         { path: '/product/:id', component: ProductDetailPage},
+        { path: '/product/register', component: ProductRegister}
     ]
 })
 
 router.beforeEach((to, from, next) => {
-    if (to.fullPath === "/product" && sessionStorage.getItem("token") == null) {
+    if (to.fullPath === "/cart" && sessionStorage.getItem("token") == null) {
         next("/member/login");
     } else {
         next();

@@ -3,7 +3,9 @@
     <div class="signup-container">
       <div class="content-container">
         <div class="text-with-image">
-          <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
+          <router-link to="/">
+            <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
+          </router-link>
         </div>
         <form id="loginForm">
           <input type="text" placeholder="이메일" id="이메일" required>

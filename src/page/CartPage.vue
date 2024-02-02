@@ -54,14 +54,12 @@
       <button class="commerce-cart__side-bar__order__btn" type="button" @click="ordersCreate">2개 상품 구매하기</button>
     </div>
   </div>
-<FooterComponent/>
 </template>
 
 <script>
 import CartCardComponent from "../components/CartCardComponent.vue";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import axios from "axios";
-import FooterComponent from "@/components/FooterComponent.vue";
 
 export default {
 
@@ -143,7 +141,6 @@ export default {
   },
 
     components: {
-      FooterComponent,
       HeaderComponent,
       CartCardComponent,
     },
@@ -337,6 +334,17 @@ li {
   display: inline-block;
   font-size: 0;
   padding: 9px;
+}
+
+.commerce-cart__group__header {
+  padding: 10px 0;
+  border-bottom: 1px solid #ededed;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
+  color: #424242;
+  background-color: #fff;
 }
 
 .css-1xskdmv.afterDeadLine::before {

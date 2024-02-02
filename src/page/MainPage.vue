@@ -40,7 +40,6 @@
     <div class="body-deadline-item store-index-div">
       <header class="body-deadline-item-header">
         <h1 class="body-deadline-item-title">마감임박 상품팜</h1>
-        <a class="button body-deadline-item-link" href="">더보기</a>
       </header>
       <div class="body-deadline-item-list row">
         <MainCardComponent v-for="product in productList" :key="product.idx" v-bind:product="product"/>

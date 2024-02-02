@@ -2,7 +2,9 @@
   <header>
   <div class="header-container">
     <div class="logo">
-      <img src="../assets/pampam-logo.png" width="130px" height="80px" alt="">
+      <router-link to="/">
+        <img src="../assets/pampam-logo.png" width="130px" height="80px" alt="">
+      </router-link>
     </div>
     <div class="center">
       <div class="center-first">

@@ -1,113 +1,156 @@
 <template>
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" as="style" crossorigin
-      href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/GmarketSans/font-face.css" />
-  </head>
-  <body>
-  <HeaderComponent/>
-    <div class="cart">
-      <div class="cart-left">
-        <div class="sticky-child commerce-cart__header">
-          <span class="commerce-cart__header__left">
-            <label class="_3xqzr _4VN_z">
-              <div class="_3zqA8">
-                <input type="checkbox" class="checkAll" checked="" value="">
-                <span class="_2mDYR">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="_2UftR">
-                    <path fill="currentColor"
-                      d="M6.185 10.247l7.079-7.297 1.435 1.393-8.443 8.703L1.3 8.432l1.363-1.464z"></path>
-                  </svg>
-                </span>
-              </div>
-              <span class="_1aN3J">
-                <span class="commerce-cart__header__caption" style="padding-left: 8px;">모두선택</span>
+<HeaderComponent/>
+  <div class="cart">
+    <div class="cart-left">
+      <div class="sticky-child commerce-cart__header">
+        <span class="commerce-cart__header__left">
+          <label class="_3xqzr _4VN_z">
+            <div class="_3zqA8">
+              <input type="checkbox" class="checkAll" checked="" value="">
+              <span class="_2mDYR">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="_2UftR">
+                  <path fill="currentColor"
+                    d="M6.185 10.247l7.079-7.297 1.435 1.393-8.443 8.703L1.3 8.432l1.363-1.464z"></path>
+                </svg>
               </span>
-            </label>
-          </span>
-          <span class="commerce-cart__header__right"><button class="commerce-cart__header__delete"
-              type="button">선택삭제</button>
-          </span>
-        </div>
-        <ul class="commerce-cart__content__group-list">
-          <li class="commerce-cart__content__group-item">
-            <article class="commerce-cart-group">
-              <h1 class="commerce-cart__group__header">주식회사 두레샘<!-- --> 배송</h1>
-              <CartCardComponent v-for="product in productList" :key="product.id" v-bind="product" />
-            </article>
-          </li>
-        </ul>
+            </div>
+            <span class="_1aN3J">
+              <span class="commerce-cart__header__caption" style="padding-left: 8px;">모두선택</span>
+            </span>
+          </label>
+        </span>
+        <span class="commerce-cart__header__right"><button class="commerce-cart__header__delete"
+            type="button">선택삭제</button>
+        </span>
       </div>
-      <div class="cart-right">
-        <dl class="commerce-cart__summary commerce-cart__side-bar__summary">
-          <div class="commerce-cart__summary__row">
-            <dt>총 상품금액</dt>
-            <dd><span class="number">99,000</span>원</dd>
-          </div>
-          <div class="commerce-cart__summary__row">
-            <dt>총 배송비</dt>
-            <dd>+ <span class="number">0</span>원</dd>
-          </div>
-          <div class="commerce-cart__summary__row">
-            <dt>총 할인금액</dt>
-            <dd>- <span class="number">40,200</span>원</dd>
-          </div>
-          <div class="commerce-cart__summary__row commerce-cart__summary__row--total">
-            <dt>결제금액</dt>
-            <dd><span class="number">58,800</span>원</dd>
-          </div>
-        </dl>
-        <button class="commerce-cart__side-bar__order__btn" type="button" @click="getCartList">2개 상품 구매하기</button>
-      </div>
+      <ul class="commerce-cart__content__group-list">
+        <li class="commerce-cart__content__group-item">
+          <article class="commerce-cart-group">
+            <h1 class="commerce-cart__group__header">주식회사 두레샘<!-- --> 배송</h1>
+            <CartCardComponent v-for="product in productList" :key="product.id" v-bind="product" />
+          </article>
+        </li>
+      </ul>
     </div>
-  </body>
-  </html>
+    <div class="cart-right">
+      <dl class="commerce-cart__summary commerce-cart__side-bar__summary">
+        <div class="commerce-cart__summary__row">
+          <dt>총 상품금액</dt>
+          <dd><span class="number">{{ amount}}</span>원</dd>
+        </div>
+        <div class="commerce-cart__summary__row">
+          <dt>총 배송비</dt>
+          <dd>+ <span class="number">0</span>원</dd>
+        </div>
+        <div class="commerce-cart__summary__row">
+          <dt>총 할인금액</dt>
+          <dd>- <span class="number">0</span>원</dd>
+        </div>
+        <div class="commerce-cart__summary__row commerce-cart__summary__row--total">
+          <dt>결제금액</dt>
+          <dd><span class="number" >{{ amount }}</span>원</dd>
+        </div>
+      </dl>
+      <button class="commerce-cart__side-bar__order__btn" type="button" @click="ordersCreate">2개 상품 구매하기</button>
+    </div>
+  </div>
+<FooterComponent/>
 </template>
 
 <script>
 import CartCardComponent from "../components/CartCardComponent.vue";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import axios from "axios";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 export default {
 
   name: 'CartPage',
   data() {
     return {
-      productList: [
-        {
-          "productName": "설탕이 들어간 제로콜라",
-          "price": 20000
-        },
-        {
-          "productName": "채소가 없는 닭가슴살 샐러드",
-          "price": 15000
-        }
-      ]
+      amount: 0,
+      productList: []
     }
   },
   methods: {
     async getCartList() {
-      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoiaG9zYWU5MDVAZ21haWwuY29tIiwibmFtZSI6InRlc3QiLCJwaG9uZU51bSI6IjAxMC0xMTExLTExMTEiLCJhZGRyZXNzIjoi7ISc7Jq47IucIiwiYXV0aG9yaXR5IjoiQ09OU1VNRVIiLCJpYXQiOjE3MDY2ODg3NTEsImV4cCI6MTcwNjk4ODc1MX0.v2rFsK61A_EC1SwFRqMjPxoquKypC9IhQ7w4feMssYU"
+      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2NzY5NzM1LCJleHAiOjE3MDcwNjk3MzV9.qhEBzq8iIzzjX-LSu9LcgwN7kL1JPsY0o0o-4OEa1ho"
       let response = await axios.get("http://localhost:8080/cart/cartList", {
         headers: {
           Authorization: token
         }
       });
-      console.log(response.data.result);
+      // console.log(response.data.result);
 
-      this.productList =  response.data.result;
+      this.productList = response.data.result;
+      this.amount = this.calculateAmount();
       return this.productList;
+    },
+
+    async ordersCreate() {
+      const { IMP } = window;
+      IMP.init('imp62836256');
+
+      var today = new Date();
+      var hours = today.getHours(); // 시
+      var minutes = today.getMinutes();  // 분
+      var seconds = today.getSeconds();  // 초
+      var milliseconds = today.getMilliseconds();
+      var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+
+
+      IMP.request_pay({ // param
+        pg: "kakaopay.TC0ONETIME",
+        pay_method: "card",
+        merchant_uid: "IMP"+makeMerchantUid,
+        name: this.productList[0].productName,
+        amount: this.amount,
+        buyer_email: "gildong@gmail.com",
+        buyer_name: "홍길동",
+        buyer_tel: "010-4242-4242",
+        buyer_addr: "서울특별시 강남구 신사동",
+        buyer_postcode: "01181"
+      }, async rsp => { // callback
+        if (rsp.success) {
+          // 결제 성공 시 로직,
+          console.log(rsp.imp_uid);
+          let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2NzY5NzM1LCJleHAiOjE3MDcwNjk3MzV9.qhEBzq8iIzzjX-LSu9LcgwN7kL1JPsY0o0o-4OEa1ho"
+          let response = await axios.get("http://localhost:8080/order/validation?impUid=" + rsp.imp_uid, {
+                headers: {
+                  Authorization: token
+                },
+              }
+          )
+          console.log(response.data)
+        }
+
+      }
+      )},
+    calculateAmount: function (){
+      let amount = 0;
+      this.productList.forEach((product) => {
+          amount += product.price;
+          // console.log(product);
+      })
+      // console.log(amount);
+      return amount;
+    },
+
+    requestPay: function () {
+
+
     }
   },
-  components: {
-    HeaderComponent,
-    CartCardComponent,
-  }
+
+    components: {
+      FooterComponent,
+      HeaderComponent,
+      CartCardComponent,
+    },
+
+    mounted() {
+      this.getCartList();
+    }
 }
 </script>
 

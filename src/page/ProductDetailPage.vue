@@ -56,22 +56,22 @@
 
           <div class="production-selling-header__content">
             <div class="production-selling-header__price">
-                                <span class="production-selling-header__price__price-wrap">
-                                    <span class="production-selling-header__price__discount">
-                                        <span class="number">15</span><span class="percent">%</span>
-                                    </span>
-                                    <del class="production-selling-header__price__original">
-                                        <span class="number">152,640</span>
-                                        <span class="won">원</span>
-                                    </del>
-                                            <span class="production-selling-header__price__separator"></span>
-                                            <div class="production-selling-header__price__price-value-wrap">
-                                                <div class="production-selling-header__price__price">
-                                                    <span class="number">129,000</span>
-                                                    <span class="won">원</span>
-                                                </div>
-                                            </div>
-                                        </span>
+              <span class="production-selling-header__price__price-wrap">
+                  <span class="production-selling-header__price__discount">
+                      <span class="number">15</span><span class="percent">%</span>
+                  </span>
+                  <del class="production-selling-header__price__original">
+                      <span class="number">152,640</span>
+                      <span class="won">원</span>
+                  </del>
+                          <span class="production-selling-header__price__separator"></span>
+                          <div class="production-selling-header__price__price-value-wrap">
+                              <div class="production-selling-header__price__price">
+                                  <span class="number">129,000</span>
+                                  <span class="won">원</span>
+                              </div>
+                          </div>
+                      </span>
             </div>
           </div>
         </div>

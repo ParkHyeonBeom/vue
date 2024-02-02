@@ -106,6 +106,8 @@ export default {
 <style>
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
+
 }
 a{
   text-decoration: none;

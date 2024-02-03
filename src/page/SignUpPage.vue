@@ -12,7 +12,10 @@
           <div class="signupfont"><h3>회원가입</h3></div>
         </div>
         <br>
-        <div class="confortLogin">SNS계정으로 간편 회원가입</div>
+        <div class="confortLogin">
+          SNS계정으로 간편 회원가입 <br>
+          현재는 운영상 카카오톡 회원가입만 가능합니다.
+        </div>
         <div class="sns-buttons">
           <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
           <a href="/users/auth/kakao" class="kakao"><img src="../../public/icon/kakao.png" alt="Kakao 로고"></a>
@@ -32,16 +35,16 @@
 
         <div class="insertpassword"><h5>비밀번호</h5></div>
         <div class="insertpassword2">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</div>
-        <input v-model="member.password" type="password" placeholder="비밀번호" id="비밀번호" required>
+        <input v-model="member.password" type="password" placeholder="비밀번호 입력" required>
         <br>
 
-        <div class="insertcheck"><h5>비밀번호 확인</h5></div>
-        <input type="password" placeholder="비밀번호 확인" id="비밀번호 확인" required>
+        <div class="insertcheck"><h5>전화번호</h5></div>
+        <input type="tel" placeholder="전화번호 입력" required>
         <br>
 
-        <div class="insertnick"><h5>닉네임</h5></div>
-        <div class="insertnick2">다른 유저와 겹치지 않도록 입력해주세요. (2~15자)</div>
-        <input v-model="member.consumerName" type="password" placeholder="별명 (2~15자)" id="닉네임" required>
+        <div class="insertnick"><h5>회원 이름</h5></div>
+        <div class="insertnick2">최소 2자에서 최대 20자까지 가능합니다.</div>
+        <input v-model="member.consumerName" type="text" placeholder="이름 (2~20자)" required>
         <br>
 
         <div class="insertnick"><h5>사업자 등록 번호</h5></div>

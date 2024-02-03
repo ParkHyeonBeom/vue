@@ -7,6 +7,7 @@ import CartPage from "@/page/CartPage.vue";
 import MainPage from "@/page/MainPage.vue";
 import ProductDetailPage from "@/page/ProductDetailPage.vue";
 import ProductRegister from "@/page/ProductRegister.vue";
+import OrderCompletePage from "@/page/OrderCompletePage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -17,7 +18,8 @@ const router = createRouter({
         { path: '/member/signup', component: SignUpPage },
         { path: '/cart', component: CartPage},
         { path: '/product/:productIdx', component: ProductDetailPage},
-        { path: '/product/register', component: ProductRegister}
+        { path: '/product/register', component: ProductRegister},
+        { path: '/order/complete', component: OrderCompletePage}
     ]
 })
 

@@ -1,17 +1,5 @@
 <template>
   <HeaderComponent></HeaderComponent>
-  <div class="deadline-product">
-    <div class="detail-product-img-wrapper">
-      <Splide :options="{ rewind: true, width: '100%' }">
-        <SplideSlide>
-          <img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=640" srcset="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=960 1.5x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1280 2x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1920 3x" class="css-1jjjg2j" alt="">
-        </SplideSlide>
-        <SplideSlide>
-          <img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=640" srcset="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=960 1.5x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1280 2x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1920 3x" class="css-1jjjg2j" alt="">
-        </SplideSlide>
-      </Splide>
-    </div>
-  </div>
   <nav class="category">
     <ul class="category-items">
       <li class="category-item"><a :href="`product/category/`+ 1"/><img class="image-size" src="../assets/icons8-carrot-96.png">
@@ -62,12 +50,12 @@ export default {
   },
   data() {
     return {
-      productList: [],
+      productList: []
     };
   },
   methods: {
-    async getProductList(page, size) {
-      let response = await axios.get("http://localhost:8080/product/list?page=" + page + "&size=" + size);
+    async getProductList(categoryIdx, page, size) {
+      let response = await axios.get("http://localhost:8080/product/category/list?category=" + categoryIdx + "page=" + page + "&size=" + size);
       console.log(response.data.result);
       this.productList =  response.data.result;
       return this.productList;

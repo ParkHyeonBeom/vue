@@ -336,7 +336,7 @@ section {
   margin:0px;
 }
 
-.category-items-descripition{
+.category-items-description{
   font-size: 16px;
   line-height: 20px;
   display: grid;

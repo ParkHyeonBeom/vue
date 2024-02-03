@@ -9,7 +9,7 @@
         </div>
         <br>
         <div>
-          <div class="signupfont"><h3>회원가입</h3></div>
+          <div class="signupfont"><h3>판매자 회원가입</h3></div>
         </div>
         <br>
         <div class="confortLogin">
@@ -23,11 +23,22 @@
         </div>
         <hr class="line">
       </div>
+      <div class="insertImg">
+        <h5>회원 사진</h5>
+        <div class="seller-img">
+          <div>
+            <span>
+              버튼을 클릭하여 사진을 업로드 해주세요. <br>
+              (프로필 사진은 한 장만 가능합니다.)
+            </span>
+            <button class="product-container-button">PC에서 불러오기</button>
+          </div>
+        </div>
+      </div>
       <br>
-
       <form id="signupForm">
         <div class="insertEmail"><h5>이메일</h5></div>
-        <input v-model="member.email" type="email" placeholder="이메일" autofocus required>
+        <input v-model="member.email" type="email" placeholder="이메일" id="이메일" autofocus required>
         <br>
         <div class="emailAuth">
           <button class="emailAuth" name="emailAuth" type="button">이메일 중복검사</button>
@@ -45,6 +56,11 @@
         <div class="insertnick"><h5>회원 이름</h5></div>
         <div class="insertnick2">최소 2자에서 최대 20자까지 가능합니다.</div>
         <input v-model="member.consumerName" type="text" placeholder="이름 (2~20자)" required>
+        <br>
+
+        <div class="insertnick"><h5>사업자 등록 번호</h5></div>
+        <div class="insertnick2">사업자 번호를 정확하게 기입해주세요. (10자)</div>
+        <input type="password" placeholder="사업자 등록 번호 ('-'를 포함하여 10자를 입력해주세요.)" id="사업자 등록 번호" pattern="[0-9]{3}-{2}-{5}" required>
         <br>
 
         <div class="consent-container">
@@ -114,9 +130,9 @@
           </div>
         </div>
         <br>
-<!--        <router-link to="/verify">-->
+        <router-link to="/verify">
           <button @click="signUp(member)" type="submit">회원 가입하기</button>
-<!--        </router-link>-->
+        </router-link>
       </form>
     </div>
   </div>
@@ -151,7 +167,7 @@ export default {
       })
 
       console.log(response);
-}
+    }
   },
   components: {},
 }
@@ -206,6 +222,36 @@ body {
   min-height: 100vh;
   margin-bottom: 50px;
   width: 100%;
+}
+
+.insertImg{
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: -15px;
+  font-size: 15px;
+  color: #494949;
+}
+
+.seller-img{
+  height: 300px;
+  background-color: rgb(227, 228, 228);
+  border-radius: 10px;
+  margin-bottom: 50px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.product-container-button {
+  width: inherit;
+  padding: 10px;
+  background-color: #18cc3c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .signup-content {

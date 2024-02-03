@@ -114,7 +114,7 @@ export default {
         if (rsp.success) {
           // 결제 성공 시 로직,
           console.log(rsp.imp_uid);
-          let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2NzY5NzM1LCJleHAiOjE3MDcwNjk3MzV9.qhEBzq8iIzzjX-LSu9LcgwN7kL1JPsY0o0o-4OEa1ho"
+          let token = localStorage.getItem("accessToken")
           let response = await axios.get("http://localhost:8080/order/validation?impUid=" + rsp.imp_uid, {
                 headers: {
                   Authorization: token

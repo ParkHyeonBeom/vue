@@ -33,10 +33,9 @@
         </router-link>
       </div>
       <div class="right-login">
-        <router-link to="/member/login">
-          로그인
-        </router-link><br>
-      </div>
+        <a v-show="token.authority === undefined" href="/member/login">로그인</a>
+        <a v-show="token.authority !== undefined" href="/" @click="logOut">로그아웃</a>
+      </div><br>
       <div class="right-signup">
         <router-link to="/member/signup">회원가입</router-link>
       </div>
@@ -97,14 +96,18 @@ export default {
   },
   methods: {
     async showData() {
-      let token = VueJwtDecode.decode("eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNvbmd5ZW9uMDYwN0BnbWFpbC5jb20iLCJuYW1lIjoidGVzdCIsInBob25lTnVtIjoiMDEwLTExMTEtMTExMSIsImFkZHJlc3MiOiLshJzsmrjsi5wiLCJhdXRob3JpdHkiOiJTRUxMRVIiLCJpYXQiOjE3MDY4NDQ1NTgsImV4cCI6MTcwNzE0NDU1OH0.hwvXIS9r7v0NheZknqstzcle2nRBIJwlhUTI5u34_DA");
+      let token = localStorage.getItem("accessToken")
+      token = VueJwtDecode.decode(token);
       console.log(token);
       if (token.authority === 'SELLER') {
         console.log("ok");
       }
       return this.token = token;
 
-}
+},
+    logOut() {
+      localStorage.clear();
+    }
   }, mounted() {
     this.showData();
   }
@@ -213,6 +216,13 @@ p.basic:hover{
   width : 42px;
   height : 30px;
   margin-left: 25px;
+  margin-top: 28px;
+}
+
+.right-logout{
+  width : 60px;
+  height : 30px;
+  margin-left: 15px;
   margin-top: 28px;
 }
 

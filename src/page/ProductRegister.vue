@@ -4,11 +4,10 @@
     <form id="product-Register-Form">
       <div class="insertImg">
         <h5>상품 사진</h5>
-        <div class="productImg">
-          <div class="css-1rgmcy8 em8wpqo3">
-            <i class="fa-solid fa-camera"></i> <br>
-            <span class="css-kvdjin em8wpqo1">버튼을 클릭하여 사진을 업로드 해주세요.</span> <br>
-            <span class="css-16dqprk em8wpqo0">최대 5장까지 올릴 수 있어요.</span> <br><br>
+        <div class="seller-img">
+          <div>
+            <span>버튼을 클릭하여 사진을 업로드 해주세요.</span> <br>
+            <span>최대 5장까지 올릴 수 있어요.</span> <br><br>
             <button class="product-container-button">PC에서 불러오기</button>
           </div>
         </div>
@@ -272,7 +271,7 @@ body {
   background-color: #00ab03;
 }
 
-.productImg{
+.seller-img{
   height: 300px;
   background-color: rgb(227, 228, 228);
   border-radius: 10px;

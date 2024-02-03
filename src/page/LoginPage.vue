@@ -16,11 +16,13 @@
         </form>
         <br>
         <div>
-          <a href="/users/password/new">비밀번호 재설정</a>
+          <a>비밀번호 재설정</a>
           <router-link to="/member/signup">
-            <a href="/normal_users/new">일반 회원가입</a>
+            <a>일반 회원가입</a>
           </router-link>
-            <a href="/seller_registration.html">판매자 회원가입</a>
+          <router-link to="/seller/signup">
+            <a>판매자 회원가입</a>
+          </router-link>
 
         </div>
         <br>
@@ -57,8 +59,10 @@ export default {
       let response = await axios.post("http://localhost:7010/member/login", {
         member
       })
-
       console.log(response);
+
+      localStorage.setItem("accessToken", "Bearer " + response.data.result);
+
     }
   }
 }

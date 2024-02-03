@@ -23,43 +23,43 @@
               <div class="carousel__list-wrap production-selling-cover-image__carousel-wrap">
                 <img class="production-selling-cover-image__entry__image" :src="product.filename" alt="">
               </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="production-selling-overview__content col-12 col-md-6 col-lg-5">
-      <div class="production-selling-header">
-        <h1 class="production-selling-header__title">
-          <p class="production-selling-header__title__brand-wrap">
-            <a class="production-selling-header__title__brand" href="/brands/home?query=%EC%95%84%EC%9A%B0%EC%96%B4%EB%A3%B8&amp;affect_type=ProductSaleDetail&amp;affect_id=672428"></a>
-          </p>
-          <div class="production-selling-header__title__name-wrap">
-            <span class="production-selling-header__title__name">{{ product.productName }}</span>
-            <div class="production-selling-header__action">
-              <button class="production-selling-header__action__button production-selling-header__action__button-scrap" type="button">
-                <svg class="icon--stroke" aria-label="스크랩" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="0.5" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-                  <path d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z"></path>
-                </svg>
-                <span class="count">122,170</span>
-              </button>
-              <div class="drop-down">
-                <button class="production-selling-header__action__button" type="button">
-                  <svg class="icon" aria-label="공유하기" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" preserveAspectRatio="xMidYMid meet">
-                    <path d="M9.64 14.646a4.5 4.5 0 1 1 0-5.292l4.54-2.476a4.5 4.5 0 1 1 .63.795l-4.675 2.55c.235.545.365 1.146.365 1.777s-.13 1.232-.365 1.777l4.675 2.55a4.5 4.5 0 1 1-.63.795l-4.54-2.476zM18 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM6 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM18 23a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z">
-                    </path>
+      <div class="production-selling-overview__content col-12 col-md-6 col-lg-5">
+        <div class="production-selling-header">
+          <h1 class="production-selling-header__title">
+            <p class="production-selling-header__title__brand-wrap">
+              <a class="production-selling-header__title__brand" href="/brands/home?query=%EC%95%84%EC%9A%B0%EC%96%B4%EB%A3%B8&amp;affect_type=ProductSaleDetail&amp;affect_id=672428"></a>
+            </p>
+            <div class="production-selling-header__title__name-wrap">
+              <span class="production-selling-header__title__name">{{ product.productName }}</span>
+              <div class="production-selling-header__action">
+                <button class="production-selling-header__action__button production-selling-header__action__button-scrap" type="button">
+                  <svg class="icon--stroke" aria-label="스크랩" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="0.5" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                    <path d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z"></path>
                   </svg>
+                  <span class="count">122,170</span>
                 </button>
+                <div class="drop-down">
+                  <button class="production-selling-header__action__button" type="button">
+                    <svg class="icon" aria-label="공유하기" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" preserveAspectRatio="xMidYMid meet">
+                      <path d="M9.64 14.646a4.5 4.5 0 1 1 0-5.292l4.54-2.476a4.5 4.5 0 1 1 .63.795l-4.675 2.55c.235.545.365 1.146.365 1.777s-.13 1.232-.365 1.777l4.675 2.55a4.5 4.5 0 1 1-.63.795l-4.54-2.476zM18 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM6 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM18 23a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z">
+                      </path>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </h1>
+          </h1>
 
-        <div class="production-selling-header__content">
-          <div class="production-selling-header__price">
+          <div class="production-selling-header__content">
+            <div class="production-selling-header__price">
               <span class="production-selling-header__price__price-wrap">
                 <span class="production-selling-header__price__discount">
-                  <span class="number"></span><span class="percent">{{(product.price - product.salePrice ) / product.price  * 100}} %  &nbsp;</span>
+                  <span class="number"></span><span class="percent">{{Math.floor((product.price - product.salePrice ) / product.price  * 100)}} %  &nbsp;</span>
                  </span>
 
                 <del class="production-selling-header__price__original">
@@ -74,29 +74,29 @@
                       </div>
                     </div>
                   </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="production-selling-header__info-wrap">
-        <div class="production-selling-header__delivery">
-          <div class="production-selling-header__delivery__title-wrap">
-            <span>배송</span>
-          </div>
-          <div class="production-selling-header__delivery__content-wrap">
+        <div class="production-selling-header__info-wrap">
+          <div class="production-selling-header__delivery">
+            <div class="production-selling-header__delivery__title-wrap">
+              <span>배송</span>
+            </div>
+            <div class="production-selling-header__delivery__content-wrap">
               <span class="production-selling-header__delivery__fee">
                 <b>무료배송</b>
               </span>
-            <div class="_2SUYq production-selling-header__delivery__today-departure__dropdown">
-              <div class="production-selling-header__delivery__today-departure__header">
+              <div class="_2SUYq production-selling-header__delivery__today-departure__dropdown">
+                <div class="production-selling-header__delivery__today-departure__header">
                   <span class="text">지금 주문시
                     <span class="active">내일 출발</span>
                   </span>
+                </div>
               </div>
-            </div>
-            <span class="production-selling-header__delivery__type">
+              <span class="production-selling-header__delivery__type">
                 <span>일반택배</span>
               </span>
-            <span class="production-selling-header__delivery__disclaimer-wrap">
+              <span class="production-selling-header__delivery__disclaimer-wrap">
                 <span class="production-selling-header__delivery__disclaimer">
                   <svg class="check-icon" width="10" height="9" fill="none" preserveAspectRatio="xMidYMid meet">
                     <path d="M1 3.83l2.153 3.03a1 1 0 001.627.005L9 1" stroke="#BDBDBD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -104,7 +104,7 @@
                     <span>제주도/도서산간 지역 20,000원</span>
                 </span>
             </span>
-            <span class="production-selling-header__delivery__expectation-section">
+              <span class="production-selling-header__delivery__expectation-section">
                 <span class="production-selling-header__delivery__expectation-wrap">
                   <span class="production-selling-header__delivery__expectation__header">
                     <svg class="delivery-time-icon" width="24" height="24" fill="none" preserveAspectRatio="xMidYMid meet">
@@ -120,38 +120,38 @@
                   </span>
                 </span>
               </span>
+            </div>
+          </div>
+        </div>
+        <div class="production-selling-option-form production-selling-overview__option-form">
+          <p class="css-49v6aj ejhg2ki2">
+            <span class="css-7c0zb9 ejhg2ki1">주문금액</span>
+            <span class="css-q02jxk ejhg2ki0">
+              <span>{{ product.salePrice }}</span>원</span>
+          </p>
+          <div class="production-selling-option-form__footer">
+            <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn">장바구니</button>
+            <button class="button button--color-blue button--size-55 button--shape-4" type="button">바로구매</button>
           </div>
         </div>
       </div>
-      <div class="production-selling-option-form production-selling-overview__option-form">
-        <p class="css-49v6aj ejhg2ki2">
-          <span class="css-7c0zb9 ejhg2ki1">주문금액</span>
-          <span class="css-q02jxk ejhg2ki0">
-              <span>0</span>원</span>
-        </p>
-        <div class="production-selling-option-form__footer">
-          <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn(1)">장바구니</button>
-          <button class="button button--color-blue button--size-55 button--shape-4" type="button">바로구매</button>
-        </div>
-      </div>
-    </div>
-    <div class="product-details">
-      <section class="production-selling-section">
-        <header class="production-selling-section__header production-selling-section__header__hidden">
-          <h1 class="production-selling-section__title">상품정보</h1>
-        </header>
-        <div class="production-selling-description production-selling-description--notice">
-          <div class="production-selling-description__expand-wrap">
-            <p style="text-align: center;"><span style="font-size: 10pt;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/167593439951524856.png" alt="상품의 상세 설명 이미지" width="165" height="165"></span></p>
-            <p style="text-align: center;"><a href="https://ohou.se/productions/905929/selling?affect_id=27&amp;affect_type=StoreSearchResult"><img src="https://prs.ohou.se/apne2/any/uploads/productions/descriptions/url/v1-197078276358208.jpg" alt="상품의 상세 설명 이미지" width="1440" height="400"></a></p>
-            <p style="text-align: center;"><a href="https://ohou.se/productions/1658834/selling?affect_id=2&amp;affect_type=StoreSearchResult"><img src="https://prs.ohou.se/apne2/any/uploads/productions/descriptions/url/v1-197078428340352.jpg" alt="상품의 상세 설명 이미지"></a></p>
+      <div class="product-details">
+        <section class="production-selling-section">
+          <header class="production-selling-section__header production-selling-section__header__hidden">
+            <h1 class="production-selling-section__title">상품정보</h1>
+          </header>
+          <div class="production-selling-description production-selling-description--notice">
+            <div class="production-selling-description__expand-wrap">
+              <p style="text-align: center;"><span style="font-size: 10pt;"><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/167593439951524856.png" alt="상품의 상세 설명 이미지" width="165" height="165"></span></p>
+              <p style="text-align: center;"><a href="https://ohou.se/productions/905929/selling?affect_id=27&amp;affect_type=StoreSearchResult"><img src="https://prs.ohou.se/apne2/any/uploads/productions/descriptions/url/v1-197078276358208.jpg" alt="상품의 상세 설명 이미지" width="1440" height="400"></a></p>
+              <p style="text-align: center;"><a href="https://ohou.se/productions/1658834/selling?affect_id=2&amp;affect_type=StoreSearchResult"><img src="https://prs.ohou.se/apne2/any/uploads/productions/descriptions/url/v1-197078428340352.jpg" alt="상품의 상세 설명 이미지"></a></p>
 
-            <p class="descriptions" style="text-align: center;"><strong>*제작 공정 시 생길 수 있는 제품의 표면의 미세한 기포,요철,흠집,얼룩 등은 불량 교환/반품의 사유가 되지 않는 점, 참고해주세요.</strong></p>
+              <p class="descriptions" style="text-align: center;"><strong>*제작 공정 시 생길 수 있는 제품의 표면의 미세한 기포,요철,흠집,얼룩 등은 불량 교환/반품의 사유가 되지 않는 점, 참고해주세요.</strong></p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
-  </div>
   <FooterComponent/>
 </template>
 
@@ -174,9 +174,9 @@ export default {
   components: {HeaderComponent, FooterComponent},
 
   methods: {
-    async productCartIn(productIdx) {
-      let token = "Bearer "
-      let response = await axios.post("http://localhost:8080/cart/in/" + productIdx, {
+    async productCartIn() {
+      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QG5hdmVyLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2ODQ0NjY2LCJleHAiOjE3MDcxNDQ2NjZ9.aKpHuh4grjdDa8eLi5KjHkjU7QWjT5xWhxNV-AGrKKc"
+      let response = await axios.get("http://localhost:8080/cart/in/" + this.productIdx, {
         headers: {
           Authorization: token
         },
@@ -188,7 +188,7 @@ export default {
       console.log(route.params.productIdx);
       this.productIdx = route.params.productIdx;
 
-      let token = "Bearer "
+      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QG5hdmVyLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2ODQ0NjY2LCJleHAiOjE3MDcxNDQ2NjZ9.aKpHuh4grjdDa8eLi5KjHkjU7QWjT5xWhxNV-AGrKKc"
       let response = await axios.get("http://localhost:8080/product/read/" + this.productIdx, {
         headers: {
           Authorization: token
@@ -1034,7 +1034,7 @@ a{
 }
 
 .percent {
-  color: red;
+  color: rgb(24, 204, 60);;
   font-weight: 900;
 }
 </style>

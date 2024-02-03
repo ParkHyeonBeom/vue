@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     async getCartList() {
-      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2NzY5NzM1LCJleHAiOjE3MDcwNjk3MzV9.qhEBzq8iIzzjX-LSu9LcgwN7kL1JPsY0o0o-4OEa1ho"
+      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QG5hdmVyLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2ODQ0NjY2LCJleHAiOjE3MDcxNDQ2NjZ9.aKpHuh4grjdDa8eLi5KjHkjU7QWjT5xWhxNV-AGrKKc"
       let response = await axios.get("http://localhost:8080/cart/cartList", {
         headers: {
           Authorization: token

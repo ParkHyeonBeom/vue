@@ -22,10 +22,10 @@
             </h1>
             <span class="deadline-item-price">
                 <span class="deadline-item-price-rate">
-                    30
+                    {{Math.floor((product.price - product.salePrice ) / product.price  * 100)}}
                     <span class="percentage">%</span>
                 </span>
-                <span class="deadline-item-price-price">{{ product.price }}</span>
+                <span class="deadline-item-price-price">{{ product.salePrice }}</span>
             </span>
             <div class="deadline-item-stats">
               <p class="deadline-item-stats-info">
@@ -34,7 +34,7 @@
               </p>
             </div>
             <div>
-              현재 참여 인원
+              현재 참여 인원 <span style="font-weight: bold"> {{ product.peopleCount}}명</span>
             </div>
           </div>
         </div>

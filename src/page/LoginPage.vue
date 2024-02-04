@@ -56,8 +56,8 @@ export default {
   methods: {
     async login(member) {
       member = toRaw(member);
-      let response = await axios.post("http://localhost:7010/member/login", {
-        member
+      let response = await axios.post("http://localhost:7010/member/login", member, {
+        headers: { "Content-Type" : `application/json`}
       })
       console.log(response);
 

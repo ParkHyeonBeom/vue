@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="right-cart">
-        <router-link to="./cart">
+        <router-link to="/cart">
           <img src="../assets/cart.jpeg" width="45px" height="45px">
 <!--          <font-awesome-icon icon="cart-shopping" />-->
         </router-link>
@@ -97,18 +97,19 @@ export default {
   methods: {
     async showData() {
       let token = localStorage.getItem("accessToken")
-      token = VueJwtDecode.decode(token);
+      token = VueJwtDecode.decode(token.split(" ")[1]);
       console.log(token);
       if (token.authority === 'SELLER') {
         console.log("ok");
       }
       return this.token = token;
 
-},
+    },
     logOut() {
       localStorage.clear();
     }
-  }, mounted() {
+  },
+  mounted() {
     this.showData();
   }
 }

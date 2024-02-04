@@ -21,7 +21,8 @@
     "jquery": "^3.7.1",
     "vue": "^3.4.15",
     "vue-jwt-decode": "^0.1.0",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

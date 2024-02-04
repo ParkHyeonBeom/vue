@@ -8,22 +8,24 @@
           <div>
             <span>버튼을 클릭하여 사진을 업로드 해주세요.</span> <br>
             <span>최대 5장까지 올릴 수 있어요.</span> <br><br>
-            <button class="product-container-button">PC에서 불러오기</button>
+            <div class="file-input-btn">
+              <v-file-input v-model="file" bg-color="#18cc3c" counter multiple label="PC에서 불러오기"></v-file-input>
+            </div>
           </div>
         </div>
       </div>
       <div class="insertEmail"><h5>상품 이름</h5></div>
-      <input class="product-container-input" type="text" placeholder="상품 이름" id="상품이름" required>
+      <input class="product-container-input" type="text" placeholder="상품 이름" id="상품이름" required v-model="product.productName">
       <br>
 
       <div class="insertpassword"><h5>상품 원가</h5></div>
       <div class="insertpassword2">상품이 판매되는 원가를 입력해주세요.</div>
-      <input class="product-container-input" type="text" placeholder="상품 원가" id="상품 원가" required>
+      <input class="product-container-input" type="text" placeholder="상품 원가" id="상품 원가" required v-model="product.price">
       <br>
 
       <div class="insertcheck"><h5>상품의 할인된 가격</h5></div>
       <div class="insertpassword2">공동구매를 통해 판매하게 될 상품의 할인된 가격을 입력해주세요.</div>
-      <input class="product-container-input" type="text" placeholder="상품의 할인된 가격" id="상품의 할인된 가격" required>
+      <input class="product-container-input" type="text" placeholder="상품의 할인된 가격" id="상품의 할인된 가격" required v-model="product.salePrice">
       <br>
 
       <div class="insertcheck"><h5>상품 카테고리</h5></div>
@@ -37,28 +39,25 @@
 
       <div class="insertnick"><h5>상품 정보</h5></div>
       <div class="insertnick2">상품의 설명을 상세히 적어주세요.</div>
-      <textarea placeholder="상품 정보" id="상품 정보" required/>
+      <textarea placeholder="상품 정보" id="상품 정보" required v-model="product.productInfo"/>
       <br>
 
       <div class="insertnick"><h5>공동구매 마감 시간 </h5></div>
       <div class="insertnick2">공동구매 마감 시간을 설정해주세요.</div>
-      <VueDatePicker time-picker></VueDatePicker>
+      <VueDatePicker :format="resultDate" v-model="deadLine" range max-range="7" placeholder="마감 시간 설정"/>
       <br>
-
-      <div class="insertnick"><h5>공동구매 참여 인원 수 </h5></div>
-      <div class="insertnick2">모집할 공동구매 인원을 입력해주세요.</div>
-      <div class="count-people">
-        <input class="people-count-input" placeholder="공동구매 참여 인원 수" id="공동구매 참여 인원 수" required>
-        <div class="css-1qi5uc2">
-          <button class="people-count-btn-base people-count-button-up">UP</button>
-          <button class="people-count-btn-base people-count-button-down">DOWN</button>
-        </div>
-      </div>
-      <br>
-
-      <button type="submit" class="product-container-button">상품 등록하기</button>
-
     </form>
+    <div class="insertnick"><h5>공동구매 참여 인원 수 </h5></div>
+    <div class="insertnick2">모집할 공동구매 인원을 입력해주세요.</div>
+    <div class="count-people">
+      <input class="people-count-input" placeholder="공동구매 참여 인원 수" id="공동구매 참여 인원 수" required v-model="product.peopleCount">
+      <div class="css-1qi5uc2">
+        <button class="people-count-btn-base people-count-button-up" @click="countUp">UP</button>
+        <button class="people-count-btn-base people-count-button-down" @click="countDown">DOWN</button>
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="product-container-button" @click="register">상품 등록하기</button>
   </div>
 <FooterComponent/>
 </template>
@@ -69,6 +68,7 @@ import FooterComponent from "@/components/FooterComponent.vue";
 import VueDatePicker from '@vuepic/vue-datepicker';
 
 import '@vuepic/vue-datepicker/dist/main.css'
+import axios from "axios";
 
 export default {
   name: "ProductRegisterPage",
@@ -86,10 +86,65 @@ export default {
         { name: "정육", value: 8},
         { name: "유제품", value: 9},
         { name: "주류", value: 10}
-      ]
+      ],
+      product: {
+        productName: "",
+        price: 0,
+        salePrice: 0,
+        categoryIdx: 0,
+        productInfo: "",
+        peopleCount: 2,
+        startAt: {},
+        closeAt: {},
+      },
+      file: [],
     }
   },
-  components: {FooterComponent, HeaderComponent, VueDatePicker}
+  components: {FooterComponent, HeaderComponent, VueDatePicker},
+  methods: {
+    async register() {
+      console.log(this.product);
+      const date = this.product.deadLine;
+      console.log(date);
+
+      const productRegisterReq = new FormData();
+      productRegisterReq.append("productRegisterReq", new Blob([JSON.stringify(this.product)], {type: "application/json"}));
+      productRegisterReq.append("file", this.file)
+
+
+      let response = await axios.post("http://localhost:8080/product/register", productRegisterReq, {
+        headers: {
+          "Content-Type": 'multipart/form-data',
+          Authorization: localStorage.getItem("accessToken")
+        }
+      });
+
+      console.log(response.data);
+    },
+
+    countUp() {
+      if (this.product.peopleCount < 10) {
+        this.product.peopleCount++;
+      } else {
+        this.product.peopleCount;
+      }
+    },
+
+    countDown() {
+      if (this.product.peopleCount > 2) {
+        this.product.peopleCount--;
+      } else {
+        return 2;
+      }
+    },
+
+    resultDate(date) {
+      console.log(date[0]);
+      console.log(date[1]);
+      this.product.startAt = date[0];
+      this.product.closeAt = date[1];
+    }
+  }
 }
 </script>
 
@@ -190,21 +245,6 @@ body {
   font-size: 12px;
 }
 
-.sns-buttons a {
-  display: inline-block;
-  margin: 0 10px;
-  padding: 10px;
-  text-decoration: none;
-  color: #fff;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.sns-buttons img {
-  width: 15px;
-  height: 15px;
-  margin-right: 3px;
-}
 
 .insertImg{
   text-align: left;
@@ -256,21 +296,6 @@ body {
   color: #494949;
 }
 
-.emailAuth button {
-  width: 100%;
-  padding: 10px;
-  background-color: rgb(247, 248, 250);
-  color: rgb(194, 200, 204);
-  border-color: rgb(218, 220, 224);
-  border: solid 1px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.emailAuth button:hover {
-  background-color: #00ab03;
-}
-
 .seller-img{
   height: 300px;
   background-color: rgb(227, 228, 228);
@@ -318,6 +343,12 @@ body {
 
 .select-category {
   margin-right: 450px;
+}
+
+.file-input-btn {
+  margin-top: 15px;
+  width: 200px;
+  text-align: center;
 }
 
 </style>

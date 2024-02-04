@@ -17,9 +17,7 @@
           현재는 운영상 카카오톡 회원가입만 가능합니다.
         </div>
         <div class="sns-buttons">
-          <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
           <a href="/users/auth/kakao" class="kakao"><img src="../../public/icon/kakao.png" alt="Kakao 로고"></a>
-          <a href="/users/auth/naver" class="naver"><img src="../../public/icon/naver.png" alt="Naver 로고"></a>
         </div>
         <hr class="line">
       </div>
@@ -27,11 +25,13 @@
         <h5>회원 사진</h5>
         <div class="seller-img">
           <div>
-            <span>
+            <span class="seller-img-input-info">
               버튼을 클릭하여 사진을 업로드 해주세요. <br>
               (프로필 사진은 한 장만 가능합니다.)
             </span>
-            <button class="product-container-button">PC에서 불러오기</button>
+            <div class="file-input-btn">
+              <v-file-input v-model="file" @change="files" base-color="white" bg-color="#18cc3c" clearable label="PC에서 불러오기" variant="solo-filled"></v-file-input>
+            </div>
           </div>
         </div>
       </div>
@@ -46,21 +46,21 @@
 
         <div class="insertpassword"><h5>비밀번호</h5></div>
         <div class="insertpassword2">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</div>
-        <input v-model="member.password" type="password" placeholder="비밀번호 입력" required>
+        <input v-model="member.sellerPW" type="password" placeholder="비밀번호 입력" required>
         <br>
 
         <div class="insertcheck"><h5>전화번호</h5></div>
-        <input type="tel" placeholder="전화번호 입력('-'도 포함해서 입력해주세요.)" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required>
+        <input v-model="member.sellerPhoneNum" type="tel" placeholder="전화번호 입력('-'도 포함해서 입력해주세요.)" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required>
         <br>
 
         <div class="insertnick"><h5>회원 이름</h5></div>
         <div class="insertnick2">최소 2자에서 최대 20자까지 가능합니다.</div>
-        <input v-model="member.consumerName" type="text" placeholder="이름 (2~20자)" required>
+        <input v-model="member.sellerName" type="text" placeholder="이름 (2~20자)" required>
         <br>
 
         <div class="insertnick"><h5>사업자 등록 번호</h5></div>
         <div class="insertnick2">사업자 번호를 정확하게 기입해주세요. (10자)</div>
-        <input type="password" placeholder="사업자 등록 번호 ('-'를 포함하여 10자를 입력해주세요.)" id="사업자 등록 번호" pattern="[0-9]{3}-{2}-{5}" required>
+        <input v-model="member.sellerBusinessNumber" type="text" placeholder="사업자 등록 번호 ('-'를 포함하여 10자를 입력해주세요.)" id="사업자 등록 번호" pattern="[0-9]{3}-{2}-{5}" required>
         <br>
 
         <div class="consent-container">
@@ -131,7 +131,7 @@
         </div>
         <br>
         <router-link to="/verify">
-          <button @click="signUp(member)" type="submit">회원 가입하기</button>
+          <button @click="signUp" type="submit">회원 가입하기</button>
         </router-link>
       </form>
     </div>
@@ -148,25 +148,30 @@ export default {
     return {
       member: {
         email: "",
-        password: "",
-        consumerName:"",
-      }
+        sellerPW: "",
+        sellerName:"",
+        sellerPhoneNum: "",
+        sellerBusinessNumber: ""
+      },
+      file: ""
     }
   },
   methods: {
-    async checkEmail(email) {
-      // 이메일 중복 검사
-      let response = await axios.get("http://localhost:8080/member/check?email=" + email)
+    async signUp() {
+      console.log(this.member);
+
+      const formData = new FormData();
+      formData.append("request", new Blob([JSON.stringify(this.member)], {type: "application/json"}));
+      formData.append("file", this.file[0]);
+      let response = await axios.post("http://localhost:7073/member/signup", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
       console.log(response);
     },
-
-    async signUp(member) {
-      console.log(member);
-      let response = await axios.post("http://localhost:7010/member/signup", {
-        member
-      })
-
-      console.log(response);
+    files() {
+      console.log(this.file[0]);
     }
   },
   components: {},
@@ -480,6 +485,16 @@ body {
 .additional-consent {
   font-size: 9px;
   opacity: 0.7; /* 연하게 만들기 위한 투명도 조절 */
+}
+
+.file-input-btn {
+  margin-top: 15px;
+  width: 200px;
+  text-align: center;
+}
+
+.seller-img-input-info {
+  text-align: center;
 }
 
 </style>

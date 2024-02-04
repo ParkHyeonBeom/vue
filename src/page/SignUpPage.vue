@@ -39,7 +39,7 @@
         <br>
 
         <div class="insertcheck"><h5>전화번호</h5></div>
-        <input type="tel" placeholder="전화번호 입력('-'도 포함해서 입력해주세요.)" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required>
+        <input v-model="member.consumerPhoneNum" type="tel" placeholder="전화번호 입력('-'도 포함해서 입력해주세요.)" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required>
         <br>
 
         <div class="insertnick"><h5>회원 이름</h5></div>
@@ -114,9 +114,9 @@
           </div>
         </div>
         <br>
-<!--        <router-link to="/verify">-->
-          <button @click="signUp(member)" type="submit">회원 가입하기</button>
-<!--        </router-link>-->
+        <router-link to="/verify">
+          <button @click="signUp" type="submit">회원 가입하기</button>
+        </router-link>
       </form>
     </div>
   </div>
@@ -134,23 +134,14 @@ export default {
         email: "",
         password: "",
         consumerName:"",
+        consumerPhoneNum: ""
       }
     }
   },
   methods: {
-    async checkEmail(email) {
-      // 이메일 중복 검사
-      let response = await axios.get("http://localhost:8080/member/check?email=" + email)
-      console.log(response);
-    },
-
-    async signUp(member) {
-      console.log(member);
-      let response = await axios.post("http://localhost:7010/member/signup", {
-        member
-      })
-
-      console.log(response);
+    async signUp() {
+      let response = await axios.post("http://localhost:7010/member/signup", this.member)
+      console.log(response.data.result);
 }
   },
   components: {},

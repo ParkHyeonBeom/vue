@@ -18,10 +18,8 @@
         <a class="product-small-item product-small-item--clickable" href="/productions/1803860/selling">
           <div class="product-small-item__image">
             <picture>
-              <source type="image/webp" src="https://prs.ohou.se/apne2/any/uploads/productions/v1-197691235680384.jpg"
-                srcset="https://prs.ohou.se/apne2/any/uploads/productions/v1-197691235680384.jpg 1.5x,https://prs.ohou.se/apne2/any/uploads/productions/v1-197691235680384.jpg 2x,https://prs.ohou.se/apne2/any/uploads/productions/v1-197691235680384.jpg 3x">
-              <img alt="상품 이미지" src="https://prs.ohou.se/apne2/any/uploads/productions/v1-197691235680384.jpg"
-                srcset="https://prs.ohou.se/apne2/any/uploads/productions/v1-197691235680384.jpg 1.5x,https://prs.ohou.se/apne2/any/uploads/productions/v1-197691235680384.jpg 2x,https://prs.ohou.se/apne2/any/uploads/productions/v1-197691235680384.jpg 3x">
+              <img alt="상품 이미지" :src="image">
+
             </picture>
           </div>
           <div class="product-small-item__content">
@@ -40,7 +38,7 @@
           <span class="carted-product__footer__left">
             <button class="carted-product__edit-btn" type="button">옵션변경</button><button class="carted-product__order-btn"
               type="button">바로구매</button></span><span class="carted-product__subtotal"><span
-              class="carted-product__subtotal__number">{{ price }}</span>원</span>
+              class="carted-product__subtotal__number">{{ salePrice }}</span>원</span>
         </div>
       </article>
     </li>
@@ -55,7 +53,8 @@ export default {
   name: 'CartCardComponent',
   props: [
     "productName",
-    "price",
+    "salePrice",
+      "image"
   ]
 }
 </script>

@@ -36,7 +36,7 @@
       <dl class="commerce-cart__summary commerce-cart__side-bar__summary">
         <div class="commerce-cart__summary__row">
           <dt>총 상품금액</dt>
-          <dd><span class="number">{{ amount}}</span>원</dd>
+          <dd><span class="number">{{ amount }}</span>원</dd>
         </div>
         <div class="commerce-cart__summary__row">
           <dt>총 배송비</dt>
@@ -44,14 +44,14 @@
         </div>
         <div class="commerce-cart__summary__row">
           <dt>총 할인금액</dt>
-          <dd>- <span class="number">0</span>원</dd>
+          <dd>- <span class="number">{{ amount - saleAmount}}</span>원</dd>
         </div>
         <div class="commerce-cart__summary__row commerce-cart__summary__row--total">
           <dt>결제금액</dt>
-          <dd><span class="number" >{{ amount }}</span>원</dd>
+          <dd><span class="number" >= {{ saleAmount}}</span>원</dd>
         </div>
       </dl>
-      <button class="commerce-cart__side-bar__order__btn" type="button" @click="ordersCreate">2개 상품 구매하기</button>
+      <button class="commerce-cart__side-bar__order__btn" type="button" @click="ordersCreate"> {{productCount}}개 상품 구매하기</button>
     </div>
   </div>
 </template>
@@ -67,13 +67,17 @@ export default {
   data() {
     return {
       amount: 0,
+      saleAmount: 0,
       productList: [],
-      customData: []
+      customData: [],
+      productCount: 0,
     }
   },
   methods: {
     async getCartList() {
-      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QG5hdmVyLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2ODQ0NjY2LCJleHAiOjE3MDcxNDQ2NjZ9.aKpHuh4grjdDa8eLi5KjHkjU7QWjT5xWhxNV-AGrKKc"
+      let token = localStorage.getItem("accessToken");
+      console.log(token);
+
       let response = await axios.get("http://localhost:8080/cart/cartList", {
         headers: {
           Authorization: token
@@ -83,6 +87,8 @@ export default {
       this.productList = response.data.result;
       console.log(this.productList);
       this.amount = this.calculateAmount();
+      this.productCount = this.productList.length;
+      console.log(this.productCount);
       return this.productList;
     },
 
@@ -97,13 +103,14 @@ export default {
       var milliseconds = today.getMilliseconds();
       var makeMerchantUid = hours +  minutes + seconds + milliseconds;
 
+      let product_name = "[팜팜] " + this.productList[0].productName + " 외 " + (this.productCount-1) + " 개 상품";
 
       IMP.request_pay({ // param
         pg: "kakaopay.TC0ONETIME",
         pay_method: "card",
         merchant_uid: "IMP"+makeMerchantUid,
-        name: this.productList[0].productName,
-        amount: this.amount,
+        name: product_name,
+        amount: this.saleAmount,
         buyer_email: "gildong@gmail.com",
         buyer_name: "홍길동",
         buyer_tel: "010-4242-4242",
@@ -114,24 +121,27 @@ export default {
         if (rsp.success) {
           // 결제 성공 시 로직,
           console.log(rsp.imp_uid);
-          let token = localStorage.getItem("accessToken")
           let response = await axios.get("http://localhost:8080/order/validation?impUid=" + rsp.imp_uid, {
                 headers: {
-                  Authorization: token
+                  Authorization: localStorage.getItem("accessToken")
                 },
               }
           )
           console.log(response.data)
+          window.location.href = "http://localhost:8081/order/complete"
+
         }
 
       }
       )},
+
     calculateAmount: function (){
       let amount = 0;
-
       this.productList.forEach((product) => {
+        console.log(product);
         amount += product.price;
-        this.customData.push({"id": product.productIdx, "name": product.productName, "price":product.price});
+        this.saleAmount += product.salePrice;
+        this.customData.push({"id": product.productIdx, "name": product.productName, "price":product.salePrice});
       })
       return amount;
     },
@@ -151,9 +161,6 @@ export default {
 
 <style>
 /* header start */
-* {
-  font-family: 'GmarketSans';
-}
 
 p {
   text-align: center;

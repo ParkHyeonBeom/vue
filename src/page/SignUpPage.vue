@@ -1,7 +1,7 @@
 <template>
   <div class="signup-content">
     <div class="signup-container">
-      <div class="content-container">
+      <div class="seller-content-container">
         <div class="text-with-image">
           <router-link to="/">
             <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
@@ -232,6 +232,8 @@ body {
   height: auto;
   margin-right: 5px;
   border-radius: 20%;
+  padding-left: 40px;
+
 }
 
 .signup-container h2 {
@@ -261,7 +263,7 @@ body {
   background-color: #00ab03;
 }
 
-.content-container {
+.signup-content-container {
   text-align: center;
   margin-top: 20px;
 }

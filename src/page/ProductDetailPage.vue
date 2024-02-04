@@ -131,7 +131,9 @@
           </p>
           <div class="production-selling-option-form__footer">
             <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn">장바구니</button>
-            <button class="button button--color-blue button--size-55 button--shape-4" type="button">바로구매</button>
+            <router-link to="/cart">
+              <button class="button button--color-blue button--size-55 button--shape-4" type="button" @click="productCartIn">바로구매</button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -175,23 +177,22 @@ export default {
 
   methods: {
     async productCartIn() {
-      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QG5hdmVyLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2ODQ0NjY2LCJleHAiOjE3MDcxNDQ2NjZ9.aKpHuh4grjdDa8eLi5KjHkjU7QWjT5xWhxNV-AGrKKc"
       let response = await axios.get("http://localhost:8080/cart/in/" + this.productIdx, {
         headers: {
-          Authorization: token
+          Authorization: localStorage.getItem("accessToken")
         },
       })
       console.log(response.data.result);
+      alert("상품이 장바구니에 담겼습니다!");
     },
     async readProductDetail() {
       const route = useRoute()
       console.log(route.params.productIdx);
       this.productIdx = route.params.productIdx;
 
-      let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZHgiOjEsImVtYWlsIjoic29uZ3llb24wNjA3QG5hdmVyLmNvbSIsIm5hbWUiOiJ0ZXN0IiwicGhvbmVOdW0iOiIwMTAtMTExMS0xMTExIiwiYWRkcmVzcyI6IuyEnOyauOyLnCIsImF1dGhvcml0eSI6IkNPTlNVTUVSIiwiaWF0IjoxNzA2ODQ0NjY2LCJleHAiOjE3MDcxNDQ2NjZ9.aKpHuh4grjdDa8eLi5KjHkjU7QWjT5xWhxNV-AGrKKc"
       let response = await axios.get("http://localhost:8080/product/read/" + this.productIdx, {
         headers: {
-          Authorization: token
+          Authorization: localStorage.getItem("accessToken")
         },
       })
       console.log(response.data.result);
@@ -748,7 +749,7 @@ div {
 .button--color-blue {
   background-color: rgb(24, 204, 60);
   border-color: rgb(30, 199, 64);
-  color: #fff;
+  color: black;
   height: 45px;
 }
 

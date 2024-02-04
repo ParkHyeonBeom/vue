@@ -84,18 +84,9 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.order-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #18CC3C;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.order-container button:hover {
-  background-color: #00AB03;
-}
+
+
+
 .content-container {
   max-width: 400px;
   width: 100%;

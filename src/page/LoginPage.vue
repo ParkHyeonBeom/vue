@@ -1,7 +1,7 @@
 <template>
   <div class="login-content">
     <div class="signup-container">
-      <div class="content-container">
+      <div class="login-content-container">
         <div class="text-with-image">
           <router-link to="/">
             <img src="../../public/icon/pampam-logo.png" alt="Pampam 로고">
@@ -56,9 +56,14 @@ export default {
   methods: {
     async login(member) {
       member = toRaw(member);
-      let response = await axios.post("http://localhost:7010/member/login", {
-        member
-      })
+
+      const data = {
+        email: member.email,
+        password: member.password,
+      }
+
+
+      let response = await axios.post("http://localhost:7010/member/login", data);
       console.log(response);
 
       localStorage.setItem("accessToken", "Bearer " + response.data.result);
@@ -126,12 +131,12 @@ export default {
   background-color: #00ab03;
 }
 
-.content-container {
+.login-content-container {
   text-align: center;
   margin-top: 20px;
 }
 
-.content-container a {
+.login-content-container a {
   color: #333;
   text-decoration: none;
   margin: 0 10px;

@@ -64,7 +64,14 @@ export default {
 
 
       let response = await axios.post("http://localhost:7010/member/login", data);
-      console.log(response);
+
+      if (response.data.code === 1000) {
+        window.location.href = "http://localhost:8081/"
+      }
+
+      if (response.data.code === 3000) {
+        alert(response.data.message)
+      }
 
       localStorage.setItem("accessToken", "Bearer " + response.data.result);
 

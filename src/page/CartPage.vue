@@ -96,12 +96,12 @@ export default {
       const { IMP } = window;
       IMP.init('imp62836256');
 
-      var today = new Date();
-      var hours = today.getHours(); // 시
-      var minutes = today.getMinutes();  // 분
-      var seconds = today.getSeconds();  // 초
-      var milliseconds = today.getMilliseconds();
-      var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+      let today = new Date();
+      let hours = today.getHours(); // 시
+      let minutes = today.getMinutes();  // 분
+      let seconds = today.getSeconds();  // 초
+      let milliseconds = today.getMilliseconds();
+      let makeMerchantUid = hours +  minutes + seconds + milliseconds;
 
       let product_name = "[팜팜] " + this.productList[0].productName + " 외 " + (this.productCount-1) + " 개 상품";
 
@@ -122,16 +122,14 @@ export default {
           // 결제 성공 시 로직,
           console.log(rsp.imp_uid);
           let response = await axios.get("http://localhost:8080/order/validation?impUid=" + rsp.imp_uid, {
-                headers: {
-                  Authorization: localStorage.getItem("accessToken")
-                },
-              }
+              headers: {
+                Authorization: localStorage.getItem("accessToken")
+              },
+            }
           )
           console.log(response.data)
           window.location.href = "http://localhost:8081/order/complete"
-
         }
-
       }
       )},
 

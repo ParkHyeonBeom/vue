@@ -30,7 +30,7 @@
               (프로필 사진은 한 장만 가능합니다.)
             </span>
             <div class="file-input-btn">
-              <v-file-input v-model="file" @change="files" base-color="white" bg-color="#18cc3c" clearable label="PC에서 불러오기" variant="solo-filled"></v-file-input>
+              <v-file-input v-model="file" base-color="white" bg-color="#18cc3c" clearable label="PC에서 불러오기" variant="solo-filled"></v-file-input>
             </div>
           </div>
         </div>
@@ -169,10 +169,15 @@ export default {
         }
       })
       console.log(response);
+
+      if (response.data.code === 1000) {
+        alert(response.data.message);
+      }
+
+      if (response.data.code === 3000) {
+        alert(response.data.message);
+      }
     },
-    files() {
-      console.log(this.file[0]);
-    }
   },
   components: {},
 }

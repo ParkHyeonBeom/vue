@@ -68,9 +68,15 @@ export default {
   methods: {
     async getProductList(page, size) {
       let response = await axios.get("http://localhost:8080/product/list?page=" + page + "&size=" + size);
-      console.log(response.data.result);
       this.productList =  response.data.result;
-      return this.productList;
+
+      if (response.data.code === 3000) {
+        alert("현재 서비스에 문제가 발생하였습니다. 다시 시도해주세요.")
+      }
+
+      if (response.data.code === 5000) {
+        alert("현재 서버에서 문제가 발생하였습니다. 나중에 다시 시도해주세요.")
+      }
     }
   },
   mounted() {

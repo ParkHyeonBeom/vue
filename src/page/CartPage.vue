@@ -61,6 +61,8 @@ import CartCardComponent from "../components/CartCardComponent.vue";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import axios from "axios";
 
+const backend = "http://www.localfoodpam.kro.kr/api"
+
 export default {
 
   name: 'CartPage',
@@ -78,7 +80,7 @@ export default {
       let token = localStorage.getItem("accessToken");
       console.log(token);
 
-      let response = await axios.get("http://localhost:8080/cart/cartList", {
+      let response = await axios.get(backend + "/cart/cartList", {
         headers: {
           Authorization: token
         }
@@ -128,7 +130,7 @@ export default {
             }
           )
           console.log(response.data)
-          window.location.href = "http://localhost:8081/order/complete"
+          window.location.href =  backend + "/order/complete"
         }
       }
       )},

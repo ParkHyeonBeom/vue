@@ -2,14 +2,17 @@
   <div class="body-deadline-item-info">
     <div>
       <article class="deadline-item">
-        <a class="deadline-item-link" :href="`product/`+ product.idx"></a>
+        <router-link v-bind:to="`/product/${product.idx}`">
+          <a class="deadline-item-link"></a>
+        </router-link>
+
         <div class="deadline-item-image">
           <div class="deadline-item-image-show">
             <div class="deadline-item-image-info">
-              <img class="image" :src="product.filename[0]" width="220px" height="300px" alt=""/>`
-              <div class="deadline-item-image-dark-overlay"></div>`
+              <img class="image" :src="product.filename[0]" width="220px" height="300px" alt=""/>
+              <div class="deadline-item-image-dark-overlay"></div>
               <div class="deadline-item-timer">
-                <div>{{timer}}남음</div>
+                <div>{{timer}} 남음</div>
               </div>
             </div>
           </div>
@@ -25,14 +28,8 @@
                     {{Math.floor((product.price - product.salePrice ) / product.price  * 100)}}
                     <span class="percentage">%</span>
                 </span>
-                <span class="deadline-item-price-price">{{ product.salePrice }}</span>
+                <span class="deadline-item-price-price">{{ product.salePrice }} 원</span>
             </span>
-            <div class="deadline-item-stats">
-              <p class="deadline-item-stats-info">
-                <strong>4.7</strong>
-                리뷰 124,345
-              </p>
-            </div>
             <div>
               현재 참여 인원 <span style="font-weight: bold"> {{ product.peopleCount}}명</span>
             </div>
@@ -57,26 +54,41 @@ export default {
     }
   },
 
-  // methods: {
-  //   update() {
-  //
-  //   }
-  // },
+  methods: {
+    update() {
+      const now = new Date();	// 현재 날짜 및 시간
+      const close = new Date(this.product.closeAt)
+      const timeDifference  = new Date(close - now);
+
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      this.timer = days+"일 " + hours + ":" + minutes + ":" + seconds;
+    }
+  },
 
   mounted() {
-    // setInterval(this.update, 1000);
+
     const now = new Date();	// 현재 날짜 및 시간
-    console.log(now.getHours());
-    console.log(this.product.closeAt);
+    const close = new Date(this.product.closeAt)
+    const timeDifference  = new Date(close - now);
+
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+    this.timer = days+"일 " + hours + ":" + minutes + ":" + seconds;
+    setInterval(this.update, 1000);
   }
 }
 </script>
 
 <style>
 /* header start */
-*{
-  font-family: 'GmarketSans';
-}
+
 p{
   text-align: center;
   font-size: 18px;
@@ -456,8 +468,10 @@ div{
   top: 8px;
   left: 8px;
   padding: 4px;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 12px;
+  padding-top: 8px;
+  height: 25px;
 }
 .deadline-item-image-dark-overlay {
   position: absolute;

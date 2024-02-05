@@ -142,6 +142,8 @@
 
 import axios from "axios";
 
+const backend = "http://www.localfoodpam.kro.kr/se"
+
 export default {
   name: 'SignUpPage',
   data() {
@@ -163,7 +165,7 @@ export default {
       const formData = new FormData();
       formData.append("request", new Blob([JSON.stringify(this.member)], {type: "application/json"}));
       formData.append("file", this.file[0]);
-      let response = await axios.post("http://localhost:7073/member/signup", formData, {
+      let response = await axios.post(backend + "/member/signup", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

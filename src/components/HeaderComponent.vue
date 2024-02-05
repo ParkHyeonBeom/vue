@@ -33,7 +33,9 @@
         </router-link>
       </div>
       <div class="right-login">
-        <a v-show="token.authority === undefined" href="/member/login">로그인</a>
+        <router-link to="/member/login">
+          <a v-show="token.authority === undefined" href="/member/login">로그인</a>
+        </router-link>
         <a v-show="token.authority !== undefined" href="/" @click="logOut"> 로그아웃 </a>
       </div><br>
       <div class="right-signup">

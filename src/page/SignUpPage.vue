@@ -126,6 +126,8 @@
 
 import axios from "axios";
 
+const backend = "http://www.localfoodpam.kro.kr/co"
+
 export default {
   name: 'SignUpPage',
   data() {
@@ -140,13 +142,13 @@ export default {
   },
   methods: {
     async signUp() {
-      let response = await axios.post("http://localhost:7010/member/signup",
+      let response = await axios.post(backend + "/member/signup",
           this.member
       )
 
       if (response.data.code === 1000) {
         alert("회원가입 성공")
-        window.location.href = "http://localhost:8081/member/login"
+        window.location.href = "http://www.localfoodpam.kro.kr/member/login"
       }
 
       if (response.data.code === 3000) {

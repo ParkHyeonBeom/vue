@@ -130,7 +130,7 @@
               <span>{{ product.salePrice }}</span>원</span>
           </p>
           <div class="production-selling-option-form__footer">
-            <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn">장바구니</button>
+              <button class="button button--color-blue-inverted button--size-55 button--shape-4" type="button" @click="productCartIn">장바구니</button>
             <router-link to="/cart">
               <button class="button button--color-blue button--size-55 button--shape-4" type="button" @click="productCartIn">바로구매</button>
             </router-link>
@@ -163,6 +163,8 @@ import FooterComponent from "@/components/FooterComponent.vue";
 import {useRoute} from "vue-router";
 import axios from "axios";
 
+const backend = "http://www.localfoodpam.kro.kr/api"
+
 export default {
   name: 'ProductDetailPage',
 
@@ -177,7 +179,7 @@ export default {
 
   methods: {
     async productCartIn() {
-      let response = await axios.get("http://localhost:8080/cart/in/" + this.productIdx, {
+      let response = await axios.get(backend + "/cart/in/" + this.productIdx, {
         headers: {
           Authorization: localStorage.getItem("accessToken")
         },
@@ -192,7 +194,7 @@ export default {
       console.log(route.params.productIdx);
       this.productIdx = route.params.productIdx;
 
-      let response = await axios.get("http://localhost:8080/product/read/" + this.productIdx, {
+      let response = await axios.get(backend + "/product/read/" + this.productIdx, {
         headers: {
           Authorization: localStorage.getItem("accessToken")
         },

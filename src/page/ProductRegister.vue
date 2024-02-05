@@ -31,8 +31,9 @@
       <div class="insertcheck"><h5>상품 카테고리</h5></div>
       <div class="insertpassword2">등록하려는 상품의 카테고리를 선택해주세요.</div>
       <div class="select-category">
-        <select>
-          <option v-for="(category, index) in categoryList" :key="index" :value="category.value">{{ category.name }}</option>
+        <select v-model="category2">
+          <option  v-for="(category, index) in categoryList" :key="index" :value="category.value">{{ category.name }}</option>
+          <div> {{category2}}</div>
         </select>
       </div>
       <br>
@@ -50,7 +51,7 @@
     <div class="insertnick"><h5>공동구매 참여 인원 수 </h5></div>
     <div class="insertnick2">모집할 공동구매 인원을 입력해주세요.</div>
     <div class="count-people">
-      <input class="people-count-input" placeholder="공동구매 참여 인원 수" id="공동구매 참여 인원 수" required v-model="product.peopleCount">
+      <input class="people-count-input" placeholder="공동구매 참여 인원 수" id="공동구매 참여 인원 수" required v-model="product.people">
       <div class="css-1qi5uc2">
         <button class="people-count-btn-base people-count-button-up" @click="countUp">UP</button>
         <button class="people-count-btn-base people-count-button-down" @click="countDown">DOWN</button>
@@ -69,9 +70,15 @@ import VueDatePicker from '@vuepic/vue-datepicker';
 
 import '@vuepic/vue-datepicker/dist/main.css'
 import axios from "axios";
+import productCategory from "@/page/ProductCategory.vue";
 
 export default {
   name: "ProductRegisterPage",
+  computed: {
+    productCategory() {
+      return productCategory
+    }
+  },
   data() {
     return {
       categoryList: [
@@ -87,13 +94,14 @@ export default {
         { name: "유제품", value: 9},
         { name: "주류", value: 10}
       ],
+      category2: "",
       product: {
         productName: "",
         price: 0,
         salePrice: 0,
-        categoryIdx: 0,
+        productType: 0,
         productInfo: "",
-        peopleCount: 2,
+        people: 2,
         startAt: {},
         closeAt: {},
       },
@@ -103,18 +111,24 @@ export default {
   components: {FooterComponent, HeaderComponent, VueDatePicker},
   methods: {
     async register() {
+      this.product.productType = this.category2;
+
+      console.log(this.file[0]);
+      console.log(this.file[1]);
+
       console.log(this.product);
-      const date = this.product.deadLine;
-      console.log(date);
 
-      const productRegisterReq = new FormData();
-      productRegisterReq.append("productRegisterReq", new Blob([JSON.stringify(this.product)], {type: "application/json"}));
-      productRegisterReq.append("file", this.file)
+      const formData = new FormData();
+      formData.append("productRegisterReq", new Blob([JSON.stringify(this.product)], {type: "application/json"}));
+      this.file.forEach((fileInfo) => {
+        formData.append("images", fileInfo);
+      })
+      console.log(formData.get("productRegisterReq"));
+      console.log(formData.get("images"));
 
-
-      let response = await axios.post("http://localhost:8080/product/register", productRegisterReq, {
+      let response = await axios.post("http://localhost:8080/product/register", formData, {
         headers: {
-          "Content-Type": 'multipart/form-data',
+          'Content-Type': 'multipart/form-data',
           Authorization: localStorage.getItem("accessToken")
         }
       });
@@ -123,16 +137,16 @@ export default {
     },
 
     countUp() {
-      if (this.product.peopleCount < 10) {
-        this.product.peopleCount++;
+      if (this.product.people < 10) {
+        this.product.people++;
       } else {
-        this.product.peopleCount;
+        this.product.people;
       }
     },
 
     countDown() {
-      if (this.product.peopleCount > 2) {
-        this.product.peopleCount--;
+      if (this.product.people > 2) {
+        this.product.people--;
       } else {
         return 2;
       }
@@ -322,6 +336,7 @@ body {
   background-position: 0 0;
   overflow: hidden;
   line-height: 100em;
+  border: 1px solid #ffffff;
 }
 
 .css-1qi5uc2 {
@@ -330,6 +345,7 @@ body {
   bottom: 80px;
   display: flex;
   flex-direction: column;
+  padding-left: 10px;
 }
 
 .people-count-input {

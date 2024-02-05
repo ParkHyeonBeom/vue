@@ -34,7 +34,7 @@
       </div>
       <div class="right-login">
         <a v-show="token.authority === undefined" href="/member/login">로그인</a>
-        <a v-show="token.authority !== undefined" href="/" @click="logOut">로그아웃</a>
+        <a v-show="token.authority !== undefined" href="/" @click="logOut"> 로그아웃 </a>
       </div><br>
       <div class="right-signup">
         <router-link to="/member/signup">회원가입</router-link>
@@ -214,10 +214,11 @@ p.basic:hover{
 }
 
 .right-login{
-  width : 42px;
+  width : 70px;
   height : 30px;
   margin-left: 25px;
   margin-top: 28px;
+  padding-left: 8px;
 }
 
 .right-logout{

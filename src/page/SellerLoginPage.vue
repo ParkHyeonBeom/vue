@@ -8,11 +8,11 @@
           </router-link>
         </div>
         <form id="loginForm" @submit.prevent>
-          <input v-model="member.email" type="text" placeholder="이메일" id="이메일" required>
-          <input v-model="member.password" type="password" placeholder="비밀번호" id="비밀번호" required>
+          <input v-model="member.email" type="text" placeholder="판매자 이메일" id="이메일" required>
+          <input v-model="member.password" type="password" placeholder="판매자 비밀번호" id="비밀번호" required>
           <br>
           <br>
-          <button @click="login(member)">로그인</button>
+          <button @click="login(member)">판매자 로그인</button>
         </form>
         <br>
         <div>
@@ -24,12 +24,7 @@
             <a>판매자 회원가입</a>
           </router-link>
         </div>
-        <div class="sellerLogin">
-          판매자이신가요?
-          <router-link to="/seller/login">
-            <span class= "sellerLoginA">판매자 로그인</span>
-          </router-link>
-        </div>
+
         <br>
         <div class="sns-buttons">
           <a href="/users/auth/facebook" class="facebook"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTAzMjlfNSAg%2FMDAxNTUzODM2ODA4MTky.-gS3ZoRn6NftLL0GUjuFUaDNRgoG9vAnH--zyNQIF1Ag.7tgGDNfnJlPGxaTGqye0f5cD0_HKnU6GNQ7wf1FbgZAg.JPEG.btf0c6dsc%2FDFGJSDF%253BLGJ%253BKJSF%253BGKLJR%253BKLDFG.gif&type=sc960_832_gif" alt="Facebook 로고"></a>
@@ -67,8 +62,7 @@ export default {
         password: member.password,
       }
 
-
-      let response = await axios.post("http://localhost:7010/member/login", data);
+      let response = await axios.post("http://localhost:7073/member/login", data);
       console.log(response);
 
       localStorage.setItem("accessToken", "Bearer " + response.data.result);

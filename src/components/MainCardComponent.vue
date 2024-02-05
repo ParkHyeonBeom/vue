@@ -6,7 +6,7 @@
         <div class="deadline-item-image">
           <div class="deadline-item-image-show">
             <div class="deadline-item-image-info">
-              <img class="image" :src="product.filename" alt=""/>
+              <img class="image" :src="product.filename" width="220px" height="300px" alt=""/>
               <div class="deadline-item-image-dark-overlay"></div>
               <div class="deadline-item-timer">
                 <div>12:12:12 남음</div>
@@ -152,7 +152,7 @@ p.basic:hover{
 }
 
 .right-login{
-  width : 42px;
+  width : 70px;
   height : 30px;
   margin-left: 25px;
   margin-top: 28px;
@@ -444,13 +444,15 @@ div{
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 60px;
   transition: background-color .2s;
 }
 .deadline-item-image-info {
   position: relative;
   border-radius: 4px;
   overflow: hidden;
+  height: 300px;
+  background-color: #e7e5e5;
 }
 .deadline-item-image {
   position: relative;
@@ -575,6 +577,7 @@ div{
 }
 .deadline-item-stats {
   display: block;
+  padding-right: 50px
 }
 .deadline-item-stats-info {
   font-size: 12px;

@@ -70,6 +70,8 @@ export default {
       let response = await axios.get("http://localhost:8080/product/list?page=" + page + "&size=" + size);
       this.productList =  response.data.result;
 
+      console.log(response.data.result);
+
       if (response.data.code === 3000) {
         alert("현재 서비스에 문제가 발생하였습니다. 다시 시도해주세요.")
       }

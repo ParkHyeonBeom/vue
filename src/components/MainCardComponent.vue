@@ -6,8 +6,8 @@
         <div class="deadline-item-image">
           <div class="deadline-item-image-show">
             <div class="deadline-item-image-info">
-              <img class="image" :src="product.filename" width="220px" height="300px" alt=""/>
-              <div class="deadline-item-image-dark-overlay"></div>
+              <img class="image" :src="product.filename[0]" width="220px" height="300px" alt=""/>`
+              <div class="deadline-item-image-dark-overlay"></div>`
               <div class="deadline-item-timer">
                 <div>{{timer}}남음</div>
               </div>

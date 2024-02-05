@@ -182,8 +182,10 @@ export default {
           Authorization: localStorage.getItem("accessToken")
         },
       })
-      console.log(response.data.result);
-      alert("상품이 장바구니에 담겼습니다!");
+
+      if (response.data.code === 1000) {
+        alert("상품이 장바구니에 담겼습니다!");
+      }
     },
     async readProductDetail() {
       const route = useRoute()
@@ -195,8 +197,12 @@ export default {
           Authorization: localStorage.getItem("accessToken")
         },
       })
-      console.log(response.data.result);
+
       this.product = response.data.result;
+
+      if (response.data.code === 3000) {
+        alert(response.data.message);
+      }
     }
   },
   mounted() {

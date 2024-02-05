@@ -9,10 +9,10 @@
       </div>
       <hr class="line">
       <div class="order-details">
-        <p>주문번호: <!-- 정보 입력--></p>
-        <p>주문일시: <!-- 정보 입력--></p>
-        <p>상품 이름: <!-- 정보 입력--></p>
-        <p>총 결제금액: <!-- 정보 입력--></p>
+        <p>주문번호: {{order.impUid}}</p>
+        <p>주문일시: {{order.orderDate}}</p>
+        <p>상품 이름: {{order.productName}}</p>
+        <p>총 결제금액: </p>
       </div>
       <div class="confirmation-message">
         <p>주문이 성공적으로 완료되었습니다. 감사합니다!</p>
@@ -27,8 +27,39 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "OrderCompletePage"
+  name: "OrderCompletePage",
+  data() {
+    return {
+      order: {
+        impUid: "",
+        orderDate: "",
+        productName: "",
+        amount: 0
+      }
+    }
+  }, methods: {
+    async getOrderList() {
+      let token = localStorage.getItem("accessToken");
+      let response = await axios.get("http://localhost:8080/order/list", {
+        headers: {
+          Authorization: token
+        }
+      })
+
+      let result = response.data.result;
+      console.log(result[0].impUid);
+      this.order.impUid = result[0].impUid;
+      this.order.orderDate = result[0].orderDate;
+      this.order.productName = result[0].productName;
+      this.order.amount = result[0].amount;
+    }
+  },
+  mounted() {
+    this.getOrderList();
+  }
 }
 </script>
 

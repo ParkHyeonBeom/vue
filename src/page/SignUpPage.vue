@@ -140,8 +140,18 @@ export default {
   },
   methods: {
     async signUp() {
-      let response = await axios.post("http://localhost:7010/member/signup", this.member)
-      console.log(response.data.result);
+      let response = await axios.post("http://localhost:7010/member/signup",
+          this.member
+      )
+
+      if (response.data.code === 1000) {
+        alert("회원가입 성공")
+        window.location.href = "http://localhost:8081/member/login"
+      }
+
+      if (response.data.code === 3000) {
+        alert("회원가입이 정상적으로 처리되지 않았습니다. 다시 시도해주세요")
+      }
 }
   },
   components: {},

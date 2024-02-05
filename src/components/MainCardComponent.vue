@@ -9,7 +9,7 @@
               <img class="image" :src="product.filename" width="220px" height="300px" alt=""/>
               <div class="deadline-item-image-dark-overlay"></div>
               <div class="deadline-item-timer">
-                <div>12:12:12 남음</div>
+                <div>{{timer}}남음</div>
               </div>
             </div>
           </div>
@@ -46,9 +46,29 @@
 <script>
 export default {
   name: 'MainCardComponent',
+
   props: [
       "product"
-  ]
+  ],
+
+  data() {
+    return {
+      timer:new Date().toLocaleTimeString(),
+    }
+  },
+
+  // methods: {
+  //   update() {
+  //
+  //   }
+  // },
+
+  mounted() {
+    // setInterval(this.update, 1000);
+    const now = new Date();	// 현재 날짜 및 시간
+    console.log(now.getHours());
+    console.log(this.product.closeAt);
+  }
 }
 </script>
 

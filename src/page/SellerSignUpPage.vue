@@ -169,10 +169,15 @@ export default {
         }
       })
       console.log(response);
+
+      if (response.data.code === 1000) {
+        alert(response.data.message);
+      }
+
+      if (response.data.code === 3000) {
+        alert(response.data.message);
+      }
     },
-    files() {
-      console.log(this.file[0]);
-    }
   },
   components: {},
 }

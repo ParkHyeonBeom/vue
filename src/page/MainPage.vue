@@ -14,26 +14,26 @@
   </div>
 
   <nav class="category">
-    <ul class="category-items" v-bind="categoryList">
-      <li class="category-item"><a :href="`product/category/`+ categoryList[0].name"/><img class="image-size" src="../assets/icons8-carrot-96.png">
+    <ul class="category-items">
+      <li class="category-item"><a :href="`product/category/`"/><img class="image-size" src="../assets/icons8-carrot-96.png">
         <div class="category-items-description">채소</div></li>
-      <li class="category-item"><a :href="`product/category/`+ categoryList[1].name"><img class="image-size" src="../assets/icons8-corn-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`"><img class="image-size" src="../assets/icons8-corn-96.png"></a>
         <div class="category-items-description">곡류</div></li>
-      <li class="category-item"><a :href="`product/category/`+ categoryList[2].name"><img class="image-size" src="../assets/icons8-almond-100.png"></a>
+      <li class="category-item"><a :href="`product/category/`"><img class="image-size" src="../assets/icons8-almond-100.png"></a>
         <div class="category-items-description">견과류</div></li>
-      <li class="category-item"><a :href="`product/category/`+ categoryList[3].name"><img class="image-size" src="../assets/icons8-mushroom-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`"><img class="image-size" src="../assets/icons8-mushroom-96.png"></a>
         <div class="category-items-description">버섯류</div></li>
-      <li class="category-item"><a :href="`product/category/`+ categoryList[4].name"><img class="image-size" src="../assets/icons8-orange-1-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`"><img class="image-size" src="../assets/icons8-orange-1-96.png"></a>
         <div class="category-items-description">과일</div></li>
-      <li class="category-item"><a :href="`product/category/`+ categoryList[5].name"><img class="image-size" src="../assets/icons8-fish-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`"><img class="image-size" src="../assets/icons8-fish-96.png"></a>
         <div class="category-items-description">수산</div></li>
-      <li class="category-item"><a :href="`product/category/`+ categoryList[6].name"><img class="image-size" src="../assets/icons8-dried-fish-91.png"></a>
+      <li class="category-item"><a :href="`product/category/`"><img class="image-size" src="../assets/icons8-dried-fish-91.png"></a>
         <div class="category-items-description">건어물</div></li>
-      <li class="category-item"><a :href="`product/category/`+ categoryList[7].name"><img class="image-size" src="../assets/icons8-meat-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`"><img class="image-size" src="../assets/icons8-meat-96.png"></a>
         <div class="category-items-description">정육</div></li>
-      <li class="category-item"><a :href="`product/category/`+ categoryList[8].name"><img class="image-size" src="../assets/icons8-milk-100.png"></a>
+      <li class="category-item"><a :href="`product/category/`"><img class="image-size" src="../assets/icons8-milk-100.png"></a>
         <div class="category-items-description">유제품</div></li>
-      <li class="category-item"><a :href="`product/category/`+ categoryList[9].name"><img class="image-size" src="../assets/icons8-beer-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`"><img class="image-size" src="../assets/icons8-beer-96.png"></a>
         <div class="category-items-description">주류</div></li>
     </ul>
   </nav>

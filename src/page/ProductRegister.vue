@@ -70,15 +70,11 @@ import VueDatePicker from '@vuepic/vue-datepicker';
 
 import '@vuepic/vue-datepicker/dist/main.css'
 import axios from "axios";
-import productCategory from "@/page/ProductCategory.vue";
-let backend = "http://www.localfoodpam.kro.kr/api"
+
 
 export default {
   name: "ProductRegisterPage",
   computed: {
-    productCategory() {
-      return productCategory
-    }
   },
   data() {
     return {
@@ -127,7 +123,7 @@ export default {
       console.log(formData.get("productRegisterReq"));
       console.log(formData.get("images"));
 
-      let response = await axios.post(backend + "/product/register", formData, {
+      let response = await axios.post("http://localhost:8080/product/register", formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: localStorage.getItem("accessToken")

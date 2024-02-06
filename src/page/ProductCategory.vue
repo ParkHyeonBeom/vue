@@ -44,6 +44,7 @@ import '@splidejs/splide/dist/css/splide.min.css';
 import axios from "axios";
 import {useRoute} from "vue-router";
 
+let backend = "http://www.localfoodpam.kro.kr/api"
 
 export default {
   name: 'MainPage',
@@ -73,7 +74,7 @@ export default {
       const route = useRoute()
       console.log(route.params.name)
       this.name = route.params.name;
-      let response = await axios.get("http://localhost:8080/product/category/list?category=" + this.name);
+      let response = await axios.get(backend + "/product/category/list?category=" + this.name);
       console.log(response.data.result);
       this.productList =  response.data.result;
       return this.productList;

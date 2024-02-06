@@ -61,8 +61,7 @@ import CartCardComponent from "../components/CartCardComponent.vue";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import axios from "axios";
 
-// const backend = "http://www.localfoodpam.kro.kr/api"
-const backend = "http://localhost:8080"
+const backend = "http://www.localfoodpam.kro.kr/api"
 
 export default {
 

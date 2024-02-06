@@ -16,5 +16,4 @@ app.use(router)
 app.use(VueSplide)
 app.use(vuetify)
 
-
 app.mount('#app')

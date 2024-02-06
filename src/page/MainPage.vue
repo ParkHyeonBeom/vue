@@ -55,7 +55,7 @@ import FooterComponent from '../components/FooterComponent.vue';
 import MainCardComponent from "@/components/MainCardComponent.vue";
 import '@splidejs/splide/dist/css/splide.min.css';
 import axios from "axios";
-
+const backend = "http://www.localfoodpam.kro.kr/api"
 
 export default {
   name: 'MainPage',
@@ -82,7 +82,7 @@ export default {
   methods: {
     async getProductList(page, size) {
 
-      let response = await axios.get("http://localhost:8080/product/list?page=" + page + "&size=" + size);
+      let response = await axios.get(backend + "/product/list?page=" + page + "&size=" + size);
       this.productList =  response.data.result;
       console.log(response.data.result);
 

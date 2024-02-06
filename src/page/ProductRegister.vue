@@ -71,8 +71,7 @@ import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import axios from "axios";
 import productCategory from "@/page/ProductCategory.vue";
-// let backend = "http://www.localfoodpam.kro.kr/api"
-const backend = "http://localhost:8080"
+let backend = "http://www.localfoodpam.kro.kr/api"
 
 export default {
   name: "ProductRegisterPage",

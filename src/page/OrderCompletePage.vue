@@ -28,9 +28,7 @@
 
 <script>
 import axios from "axios";
-// let backend = "http://www.localfoodpam.kro.kr/api"
-
-const backend = "http://localhost:8080"
+let backend = "http://www.localfoodpam.kro.kr/api"
 
 
 export default {

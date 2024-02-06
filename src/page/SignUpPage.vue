@@ -125,6 +125,7 @@
 <script>
 
 import axios from "axios";
+const backend = "http://www.localfoodpam.kro.kr/co"
 
 export default {
   name: 'SignUpPage',
@@ -140,7 +141,7 @@ export default {
   },
   methods: {
     async signUp() {
-      let response = await axios.post( "http://localhost:8080/member/signup",
+      let response = await axios.post( backend + "/member/signup",
           this.member
       )
 

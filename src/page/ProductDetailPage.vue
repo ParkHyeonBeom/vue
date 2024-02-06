@@ -163,8 +163,7 @@ import FooterComponent from "@/components/FooterComponent.vue";
 import {useRoute} from "vue-router";
 import axios from "axios";
 
-// const backend = "http://www.localfoodpam.kro.kr/api"
-const backend = "http://localhost:8080"
+const backend = "http://www.localfoodpam.kro.kr/api"
 
 export default {
   name: 'ProductDetailPage',

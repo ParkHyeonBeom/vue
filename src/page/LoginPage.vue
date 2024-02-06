@@ -47,6 +47,7 @@
 <script>
 import axios from "axios";
 import {toRaw} from "vue";
+const backend = "http://www.localfoodpam.kro.kr/co"
 
 export default {
   name: 'LoginPage',
@@ -68,7 +69,7 @@ export default {
       }
 
 
-      let response = await axios.post("http://localhost:8080/member/login", data);
+      let response = await axios.post(backend + "/member/login", data);
 
       if (response.data.code === 1000) {
         // window.location.href = "http://www.localfoodpam.kro.kr"

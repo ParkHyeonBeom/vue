@@ -70,15 +70,11 @@ import VueDatePicker from '@vuepic/vue-datepicker';
 
 import '@vuepic/vue-datepicker/dist/main.css'
 import axios from "axios";
-import productCategory from "@/page/ProductCategory.vue";
 
 
 export default {
   name: "ProductRegisterPage",
   computed: {
-    productCategory() {
-      return productCategory
-    }
   },
   data() {
     return {

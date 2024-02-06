@@ -9,7 +9,6 @@ import ProductDetailPage from "@/page/ProductDetailPage.vue";
 import ProductRegister from "@/page/ProductRegister.vue";
 import OrderCompletePage from "@/page/OrderCompletePage.vue";
 import SellerSignUpPage from "@/page/SellerSignUpPage.vue";
-import ProductCategory from "@/page/ProductCategory.vue";
 import SellerLoginPage from "@/page/SellerLoginPage.vue";
 
 const router = createRouter({
@@ -25,7 +24,6 @@ const router = createRouter({
         { path: '/product/:productIdx', component: ProductDetailPage },
         { path: '/product/register', component: ProductRegister },
         { path: '/order/complete', component: OrderCompletePage },
-        { path: '/product/category/name', component: ProductCategory }
     ]
 })
 

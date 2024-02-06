@@ -61,7 +61,7 @@ import CartCardComponent from "../components/CartCardComponent.vue";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import axios from "axios";
 
-const backend = "http://www.localfoodpam.kro.kr/api"
+// const backend = "http://www.localfoodpam.kro.kr/api"
 
 export default {
 
@@ -80,7 +80,7 @@ export default {
       let token = localStorage.getItem("accessToken");
       console.log(token);
 
-      let response = await axios.get(backend + "/cart/cartList", {
+      let response = await axios.get("http://localhost:8080/cart/cartList", {
         headers: {
           Authorization: token
         }
@@ -125,12 +125,12 @@ export default {
           console.log(rsp.imp_uid);
           let response = await axios.get("http://localhost:8080/order/validation?impUid=" + rsp.imp_uid, {
               headers: {
-                Authorization: localStorage.getItem("accessToken")
+                Authorization: localStorage.getItem("accessToken"),
               },
             }
           )
           console.log(response.data)
-          window.location.href =  backend + "/order/complete"
+          window.location.href =  "http://localhost:8080/order/complete"
         }
       }
       )},

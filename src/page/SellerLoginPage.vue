@@ -43,7 +43,6 @@
 import axios from "axios";
 import {toRaw} from "vue";
 
-const backend = "http://www.localfoodpam.kro.kr/se"
 
 export default {
   name: 'LoginPage',
@@ -64,7 +63,7 @@ export default {
         password: member.password,
       }
 
-      let response = await axios.post(backend + "/member/login", data);
+      let response = await axios.post("http://localhost:8080/seller/login", data);
       console.log(response);
 
       localStorage.setItem("accessToken", "Bearer " + response.data.result);

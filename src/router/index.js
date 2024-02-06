@@ -25,7 +25,7 @@ const router = createRouter({
         { path: '/product/:productIdx', component: ProductDetailPage },
         { path: '/product/register', component: ProductRegister },
         { path: '/order/complete', component: OrderCompletePage },
-        { path: '/product/category/idx', component: ProductCategory }
+        { path: '/product/category/name', component: ProductCategory }
     ]
 })
 

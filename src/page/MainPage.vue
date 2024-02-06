@@ -14,26 +14,26 @@
   </div>
 
   <nav class="category">
-    <ul class="category-items">
-      <li class="category-item"><a :href="`product/category/`+ 1"/><img class="image-size" src="../assets/icons8-carrot-96.png">
+    <ul class="category-items" v-bind="categoryList">
+      <li class="category-item"><a :href="`product/category/`+ categoryList[0].name"/><img class="image-size" src="../assets/icons8-carrot-96.png">
         <div class="category-items-description">채소</div></li>
-      <li class="category-item"><a :href="`product/category/`+ 2"><img class="image-size" src="../assets/icons8-corn-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`+ categoryList[1].name"><img class="image-size" src="../assets/icons8-corn-96.png"></a>
         <div class="category-items-description">곡류</div></li>
-      <li class="category-item"><a :href="`product/category/`+ 3"><img class="image-size" src="../assets/icons8-almond-100.png"></a>
+      <li class="category-item"><a :href="`product/category/`+ categoryList[2].name"><img class="image-size" src="../assets/icons8-almond-100.png"></a>
         <div class="category-items-description">견과류</div></li>
-      <li class="category-item"><a :href="`product/category/`+ 4"><img class="image-size" src="../assets/icons8-mushroom-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`+ categoryList[3].name"><img class="image-size" src="../assets/icons8-mushroom-96.png"></a>
         <div class="category-items-description">버섯류</div></li>
-      <li class="category-item"><a :href="`product/category/`+ 5"><img class="image-size" src="../assets/icons8-orange-1-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`+ categoryList[4].name"><img class="image-size" src="../assets/icons8-orange-1-96.png"></a>
         <div class="category-items-description">과일</div></li>
-      <li class="category-item"><a :href="`product/category/`+ 6"><img class="image-size" src="../assets/icons8-fish-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`+ categoryList[5].name"><img class="image-size" src="../assets/icons8-fish-96.png"></a>
         <div class="category-items-description">수산</div></li>
-      <li class="category-item"><a :href="`product/category/`+ 7"><img class="image-size" src="../assets/icons8-dried-fish-91.png"></a>
+      <li class="category-item"><a :href="`product/category/`+ categoryList[6].name"><img class="image-size" src="../assets/icons8-dried-fish-91.png"></a>
         <div class="category-items-description">건어물</div></li>
-      <li class="category-item"><a :href="`product/category/`+ 8"><img class="image-size" src="../assets/icons8-meat-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`+ categoryList[7].name"><img class="image-size" src="../assets/icons8-meat-96.png"></a>
         <div class="category-items-description">정육</div></li>
-      <li class="category-item"><a :href="`product/category/`+ 9"><img class="image-size" src="../assets/icons8-milk-100.png"></a>
+      <li class="category-item"><a :href="`product/category/`+ categoryList[8].name"><img class="image-size" src="../assets/icons8-milk-100.png"></a>
         <div class="category-items-description">유제품</div></li>
-      <li class="category-item"><a :href="`product/category/`+ 10"><img class="image-size" src="../assets/icons8-beer-96.png"></a>
+      <li class="category-item"><a :href="`product/category/`+ categoryList[9].name"><img class="image-size" src="../assets/icons8-beer-96.png"></a>
         <div class="category-items-description">주류</div></li>
     </ul>
   </nav>
@@ -56,7 +56,6 @@ import MainCardComponent from "@/components/MainCardComponent.vue";
 import '@splidejs/splide/dist/css/splide.min.css';
 import axios from "axios";
 
-const backend = "http://www.localfoodpam.kro.kr/api"
 
 export default {
   name: 'MainPage',
@@ -66,12 +65,24 @@ export default {
   data() {
     return {
       productList: [],
+      categoryList: [
+        { name: "채소", value: 0},
+        { name: "곡류", value: 1},
+        { name: "견과류", value: 2},
+        { name: "버섯류", value: 3},
+        { name: "과일", value: 4},
+        { name: "수산", value: 5},
+        { name: "건어물", value: 6},
+        { name: "정육", value: 7},
+        { name: "유제품", value: 8},
+        { name: "주류", value: 9}
+      ]
     };
   },
   methods: {
     async getProductList(page, size) {
 
-      let response = await axios.get(backend + "/product/list?page=" + page + "&size=" + size);
+      let response = await axios.get("http://localhost:8080/product/list?page=" + page + "&size=" + size);
       this.productList =  response.data.result;
       console.log(response.data.result);
 

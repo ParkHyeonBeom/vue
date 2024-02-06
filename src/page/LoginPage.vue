@@ -48,8 +48,6 @@
 import axios from "axios";
 import {toRaw} from "vue";
 
-const backend = "http://www.localfoodpam.kro.kr/co"
-
 export default {
   name: 'LoginPage',
   data() {
@@ -70,10 +68,10 @@ export default {
       }
 
 
-      let response = await axios.post(backend + "/member/login", data);
+      let response = await axios.post("http://localhost:8080/member/login", data);
 
       if (response.data.code === 1000) {
-        window.location.href = "http://www.localfoodpam.kro.kr"
+        // window.location.href = "http://www.localfoodpam.kro.kr"
       }
 
       if (response.data.code === 3000) {
@@ -82,7 +80,7 @@ export default {
 
       localStorage.setItem("accessToken", "Bearer " + response.data.result);
 
-      window.location.href = "http://www.localfoodpam.kro.kr"
+      window.location.href = "http://localhost:8080"
 
 
     }

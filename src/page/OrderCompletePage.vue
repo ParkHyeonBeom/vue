@@ -28,7 +28,10 @@
 
 <script>
 import axios from "axios";
-let backend = "http://www.localfoodpam.kro.kr/api"
+// let backend = "http://www.localfoodpam.kro.kr/api"
+
+const backend = "http://localhost:8080"
+
 
 export default {
   name: "OrderCompletePage",

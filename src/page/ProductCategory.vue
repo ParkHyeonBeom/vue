@@ -42,7 +42,9 @@ import FooterComponent from '../components/FooterComponent.vue';
 import MainCardComponent from "@/components/MainCardComponent.vue";
 import '@splidejs/splide/dist/css/splide.min.css';
 import axios from "axios";
-let backend = "http://www.localfoodpam.kro.kr/api"
+// let backend = "http://www.localfoodpam.kro.kr/api"
+
+const backend = "http://localhost:8080"
 
 export default {
   name: 'MainPage',

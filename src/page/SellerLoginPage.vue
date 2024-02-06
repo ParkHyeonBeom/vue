@@ -64,7 +64,7 @@ export default {
         password: member.password,
       }
 
-      let response = await axios.post(backend + "/member/login", data);
+      let response = await axios.post(backend + "/seller/login", data);
       console.log(response);
 
       localStorage.setItem("accessToken", "Bearer " + response.data.result);

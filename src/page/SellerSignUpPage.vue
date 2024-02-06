@@ -165,7 +165,7 @@ export default {
       const formData = new FormData();
       formData.append("request", new Blob([JSON.stringify(this.member)], {type: "application/json"}));
       formData.append("file", this.file[0]);
-      let response = await axios.post(backend + "/member/signup", formData, {
+      let response = await axios.post(backend + "/seller/signup", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

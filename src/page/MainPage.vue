@@ -7,7 +7,7 @@
           <img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=640" srcset="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=960 1.5x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1280 2x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1920 3x" class="css-1jjjg2j" alt="">
         </SplideSlide>
         <SplideSlide>
-          <img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=640" srcset="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=960 1.5x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1280 2x,https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/df4bc6da-892e-4793-9bf9-6d809a2dfa77.jpg?w=1920 3x" class="css-1jjjg2j" alt="">
+          <img src="https://product-image.kurly.com/cdn-cgi/image/width=1900,height=370,quality=85/banner/main/pc/img/7d0ce6ba-c1fd-4225-afa1-4c4c3b47ee88.jpg" class="css-1jjjg2j" alt="">
         </SplideSlide>
       </Splide>
     </div>
@@ -56,7 +56,8 @@ import MainCardComponent from "@/components/MainCardComponent.vue";
 import '@splidejs/splide/dist/css/splide.min.css';
 import axios from "axios";
 
-const backend = "http://www.localfoodpam.kro.kr/api"
+// const backend = "http://www.localfoodpam.kro.kr/api"
+const backend = "http://localhost:8080"
 
 export default {
   name: 'MainPage',
